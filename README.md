@@ -1,112 +1,175 @@
-# Jeopardy Board
+# Jeopardy Game (Part 2)
+In this project, we will be completing the functionality for our Jeopardy / quiz game utilizing what we learned this week!
 
-Jeopardy! The great American quiz show has been a staple of network television since the 60s. In this project we will be creating our own Jeopardy board which we will build the functionality for in later weeks. For now we're going to focus on site design and navigation.
+The game of Jeopardy consists of several players that compete to earn points by selecting questions of varying points values from a board. The board is a 6 X 6 square with each column representing a category, and the first row containing the titles of each category, and every row after being increasingly difficult questions (with correspondingly higher point values) for their categories
 
-This site will consist of 4 pages: a landing page, a first round page, a second round page, and a final round page.
+You will be given placeholder data for this project in the form of an array of objects.
 
-## Wireframes
+# Stories
+## Ready, Set, Go!
+`Given` the players are on the landing page
 
-At the following link, you will find a Figma containing the four wireframes necessary for this project.
+`When` one player clicks the 'Start Game' button
 
-**[Link to Project Wireframes](https://www.figma.com/file/w9CN0fvM7gqYtKiGYXxvXv/jeopardy-wireframes?node-id=0%3A1)**
+`Then` the players redirected to the Round 1 page
 
-## Stories
+## Start the Game
+`Given` the players have been redirected to the Round 1 page
 
-## The Landing Page
+`When` the page loads
 
-**Given** an `index.html` file exists.
+`Then` there is a notification that it is player 1's turn to choose
 
-**When** the user visits the `index.html` file.
+`And` the "Guess", "Pass", and "Round 2" buttons are disabled
 
-**Then** they should see the landing page.
+## Select a Question
+`Given` an empty board, and player 1 is currently up
 
-**And** there should be a centered title at the top of the page.
+`When` player 1 selects a card
 
-**And** a centered image that represents your Jeopardy game.
+`Then` the score on the card is replaced by a question
 
-**And** a "Play" button centered below the image.
+`And` the "Submit Answer" button is enabled
 
-**And** a footer displaying site information.
+`And` the "Pass Question" button is enabled
 
-## Navigation to First Round
+## Pass a Question
+`Given` a question has been chosen
 
-**Given** the user is on the landing page.
+`When` the user clicks on the "Pass Question" button
 
-**When** they click the "Play" button.
+`Then` player 2 gets an opportunity to answer the question
 
-**Then** they should be routed to the first round page.
+`And` the notification area changes to player 2's turn
 
-## First Round
+## Answer a Question Correctly
+`Given` a question has been chosen
 
-**Given** the user is on the first round page.
+`When` the player submits an answer
 
-**Then** they should see a title, that indicates it's the first round.
+`And` the answer is correct
 
-**And** they should see a subtitle that indicates whose turn it is.
+`Then` the game awards the player the amount of points that were on the card
 
-**And** a 6X6 grid with category names across the top row, and points from 200 - 1000 below each category, doubling in each row.
+`And` the card is blanked out
 
-**And** the grid should be centered on the page.
+`And` the current player does not change
 
-**And** they should see a box to enter their input, a Guess button, a Pass button.
+## Answer a Question Incorrectly
+`Given` a question has been chosen
 
-**And** they should see the scores of Player 1 and Player 2 displayed.
+`When` the player submits an answer
 
-**And** a button to navigate to the next round.
+`And` the answer is incorrect
 
-**And** a footer displaying site information.
+`Then` the game subtracts the point total from the player's score
 
-## Second Round Navigation
+`And` the other player gets a chance to answer the question
 
-**Given** the user is on the first round page.
+`And` if no one guesses correctly the original player gets to choose a new question
 
-**When** they click the button to navigate to the second round page.
+## Score Board
+`Given` the game has been started
 
-**Then** they should be taken to the second round page.
+`When` the score changes
 
-## Second Round Page
+`Then` the game should display each player's current score on the page
 
-**Given** the user is on the second round page.
+## Only Allow One Question
+`Given` a card has already been selected
 
-**Then** they should see a title, that indicates it's the second round.
+`When` the player tries to pick a new card
 
-**And** they should see a subtitle that indicates whose turn it is.
+`Then` the question does not change
 
-**And** a 6X6 grid with category names across the top row, and points from 400 - 2000 below each category, doubling in each row.
+`And` the game alerts the player that they must answer, or pass the question
 
-**And** the grid should be centered on the page
+## End Round 1
+`Given` that the score of one user reaches 15,000 points.
 
-**And** they should see a box to enter their input, a Guess button, a Pass button.
+`Or` the board has been cleared
 
-**And** they should see the scores of Player 1 and Player 2 displayed.
+`Then` the game alerts the players to move on to Round 2.
 
-**And** a button to navigate to the next round.
+`And` the "Round 2" button becomes enabled
 
-**And** a footer displaying site information.
+`And` the "Round 2" button navigates to the Round 2 page.
 
-## Final Jeopardy Navigation
+### Hint: You can use query parameters in the URL to pass score information between pages
 
-**Given** the user is on the second round page.
+# Round 2
+`Given` the players are on the Round 2 Page
 
-**When** they click the button to the next round.
+`Then` the players scores are the same as they were at the end of Round 1.
 
-**Then** they should be taken to the Final Round page.
+`And` the game logic behaves as Round 1.
 
-## Final Round
+`And` the "Final Round" button is disabled
 
-**Given** the user is on the Final Round page.
+## End Round 2
+`Given` that the score of one user reaches 30,000 points.
 
-**Then** they should see a title indicating it's the Final Round.
+`Or` the board has been cleared
 
-**And** a single final category with a single final question.
+`Then` the game alerts the players to move on to the Final Round.
 
-**And** Two forms:
+`And` the "Final Round" button becomes enabled
 
-- One with a field for the amount you want to bet.
-- One for the final answer, the button for which should be disabled
+`And` the "Final Round" button navigates to the Final Round page.
 
-## Icebox
+# Final Round
+`Given` the players are on the Final Round page
 
-- Create your own theme for your site.
-- Make the site fully mobile responsive.
-- The site should have animated elements. Libraries are allowed.
+`Then` they should be presented with a category
+
+`And` prompted to make a wager up to their maximum point total
+
+# Let's Make a Wager!
+`Given` we're on the Final Round page
+
+`When` all players have made a wager
+
+`Then` the question is revealed
+
+`And` all players get a chance to answer the question before the answer is revealed
+
+# Winning the Game
+`Given` all players have answered the final question
+
+`When` the last answer is submitted
+
+`Then` the amount wagered is added or subtracted from the total score
+
+`And` the game should notify the users who won based on the final score
+
+# Icebox
+## Say my Name!
+`Given` the the user is on the landing page
+
+`When` the user clicks "Start Game"
+
+`Then` the game should allow the user(s) to set their player names
+
+`And` should use those names throughout the game
+
+## Random Questions
+`Given` a game has been started
+
+`When` the board is generated
+
+`Then` the board has questions different from the placeholder data
+
+## Daily Double
+`Given` a game is started
+
+`When` the board is generated
+
+`Then` two random questions should be set as the "Daily Double" and are worth twice the amount of points on their cards
+
+## Try to Make Fetch Happen
+`Given` a game is started
+
+`When` the board is generated
+
+`Then` the board has questions fetched from an external API
+
