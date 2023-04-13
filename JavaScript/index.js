@@ -1,0 +1,5 @@
+// Project: Week 4
+// Jeopardy Board Part 2 - Adding functionality
+// John Isabella III
+
+console.log("I am in the Index.JS file") //! TEST
