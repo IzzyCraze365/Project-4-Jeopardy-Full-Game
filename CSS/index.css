@@ -18,6 +18,9 @@
 /* Adds some fun FX to the site  */
 @import "animation.css";
 
+/* Adds a Modal to the site  */
+@import "modal.css";
+
 /* this is the only CSS imported into index.html */
 /* this is the only CSS imported into round-1.html */
 /* this is the only CSS imported into round-1.html */

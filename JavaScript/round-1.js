@@ -24,7 +24,7 @@ const placeholderQuestions = [
       answer: "Hydrogen",
     },];
 
-
+    var modal = document.getElementById("modal");
 
 // Select Questions
 
@@ -41,14 +41,19 @@ for (let i = 0; i < questionSelector.length; i++) {
 
 
 function revealQuestion(){
+    const spinnyBoyz = document.getElementsByClassName("points");  
     console.log("Click Works"); //! Test
+    modal.style.display = "block";
+    spinnyBoyz.classList.toggle("spin");
     questionSelector.forEach((item) => {
     let revealQuestionText = document.createElement("p");
     revealQuestionText.textContent = item;
-    let poolParty = document.getElementByClass("jeopardyBoard");
-    poolParty.appendChild(revealQuestionText);
+    console.log("MIDPOINT"); //! Test
+    let poolParty = document.getElementById("jeopardyBoard");
+    poolParty = revealQuestionText; //.appendChild(revealQuestionText);
     console.log("Appended"); //! Test
         });
+        console.log("Post Append"); //! Test
       }
 
    /* 
