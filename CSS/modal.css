@@ -1,6 +1,6 @@
 /* CSS Week 4 - Project */
 /* Jeopardy! Project  */
-/* Using a Model from W3 Schools */
+/* Using a Model Template from W3 Schools */
 
 /* TODO imported into index.css */
 
@@ -30,7 +30,8 @@
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
-/* The Close Button */
+/* 
+The Close Buttons have the following CSS
 .close {
   color: var(--questionBackground);
   float: right;
@@ -44,3 +45,5 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+ */

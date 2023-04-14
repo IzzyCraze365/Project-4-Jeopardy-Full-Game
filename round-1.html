@@ -29,71 +29,72 @@
       <div class="jeopardyBoard" id="jeopardyBoard">
         <div class="box catergory">
           <!-- Makes the row of Catergories -->
-          <div class="box catergory1">Catergory</div>
-          <div class="box catergory2">Catergory</div>
-          <div class="box catergory3">Catergory</div>
-          <div class="box catergory4">Catergory</div>
-          <div class="box catergory5">Catergory</div>
-          <div class="box catergory6">Catergory</div>
+          <div class="box catergory1" id="catergory1">Catergory</div>
+          <div class="box catergory2" id="catergory2">Catergory</div>
+          <div class="box catergory3" id="catergory3">Catergory</div>
+          <div class="box catergory4" id="catergory4">Catergory</div>
+          <div class="box catergory5" id="catergory5">Catergory</div>
+          <div class="box catergory6" id="catergory6">Catergory</div>
         </div>
         <div class ="modal spin" id="modal"> <!-- SPIN HERE IS FUN -->
-          <div class="modal-content">
+          <div class="modal-content">      
+            <p id="questionInsideModal">Model words</p>
+            <div class="userInput">
+            <!-- This code allows the player to input an answer -->
+            <input
+              type="text"
+              required
+              minlength="1"
+              maxlength="20"
+              size="30"
+              placeholder="Answer Here"
+            />
+          </div>
+    
+          <div class="answers">
+            <!-- Selector Buttons -->
+            <div class="answer close">Guess Button</div>
+            <div class="answer close">Pass Button</div>
+          </div>
         <span class="close">&times;</span> <!-- Addition for Modal -->
-      <p>Model</p>
+      
       </div></div>
         <div class="box question">
           <!-- Makes the Grid for the Questions -->
-          <button class="box question1_1 points" id="question1_1">100</button>
-          <div class="box question1_2 points spin" id="question1_2">100</div>
-          <div class="box question1_3 points spin" id="question1_3">100</div>
-          <div class="box question1_4 points spin" id="question1_4">100</div>
-          <div class="box question1_5 points spin" id="question1_5">100</div>
-          <div class="box question1_6 points spin" id="question1_6">100</div>
-          <div class="box question2_1 points spin" id="question2_1">200</div>
-          <div class="box question2_2 points spin" id="question2_2">200</div>
-          <div class="box question2_3 points spin" id="question2_3">200</div>
-          <div class="box question2_4 points spin" id="question2_4">200</div>
-          <div class="box question2_5 points spin" id="question2_5">200</div>
-          <div class="box question2_6 points spin" id="question2_6">200</div>
-          <div class="box question3_1 points spin" id="question3_1">300</div>
-          <div class="box question3_2 points spin" id="question3_2">300</div>
-          <div class="box question3_3 points spin" id="question3_3">300</div>
-          <div class="box question3_4 points spin" id="question3_4">300</div>
-          <div class="box question3_5 points spin" id="question3_5">300</div>
-          <div class="box question3_6 points spin" id="question3_6">300</div>
-          <div class="box question4_1 points spin" id="question4_1">400</div>
-          <div class="box question4_2 points spin" id="question4_2">400</div>
-          <div class="box question4_3 points spin" id="question4_3">400</div>
-          <div class="box question4_4 points spin" id="question4_4">400</div>
-          <div class="box question4_5 points spin" id="question4_5">400</div>
-          <div class="box question4_6 points spin" id="question4_6">400</div>
-          <div class="box question5_1 points spin" id="question5_1">500</div>
-          <div class="box question5_2 points spin" id="question5_2">500</div>
-          <div class="box question5_3 points spin" id="question5_3">500</div>
-          <div class="box question5_4 points spin" id="question5_4">500</div>
-          <div class="box question5_5 points spin" id="question5_5">500</div>
-          <div class="box question5_6 points spin" id="question5_6">500</div>
+          <div class="box points catergory1 value100" id="question1_100">$100</div>
+          <div class="box points catergory2 value100" id="question2_100">$100</div>
+          <div class="box points catergory3 value100" id="question3_100">$100</div>
+          <div class="box points catergory4 value100" id="question4_100">$100</div>
+          <div class="box points catergory5 value100" id="question5_100">$100</div>
+          <div class="box points catergory6 value100" id="question6_100">$100</div>
+          <div class="box points catergory1 value200" id="question1_200">$200</div>
+          <div class="box points catergory2 value200" id="question2_200">$200</div>
+          <div class="box points catergory3 value200" id="question3_200">$200</div>
+          <div class="box points catergory4 value200" id="question4_200">$200</div>
+          <div class="box points catergory5 value200" id="question5_200">$200</div>
+          <div class="box points catergory6 value200" id="question6_200">$200</div>
+          <div class="box points catergory1 value300" id="question1_300">$300</div>
+          <div class="box points catergory2 value300" id="question2_300">$300</div>
+          <div class="box points catergory3 value300" id="question3_300">$300</div>
+          <div class="box points catergory4 value300" id="question4_300">$300</div>
+          <div class="box points catergory5 value300" id="question5_300">$300</div>
+          <div class="box points catergory6 value300" id="question6_300">$300</div>
+          <div class="box points catergory1 value400" id="question1_400">$400</div>
+          <div class="box points catergory2 value400" id="question2_400">$400</div>
+          <div class="box points catergory3 value400" id="question3_400">$400</div>
+          <div class="box points catergory4 value400" id="question4_400">$400</div>
+          <div class="box points catergory5 value400" id="question5_400">$400</div>
+          <div class="box points catergory6 value400" id="question6_400">$400</div>
+          <div class="box points catergory1 value500" id="question1_500">$500</div>
+          <div class="box points catergory2 value500" id="question2_500">$500</div>
+          <div class="box points catergory3 value500" id="question3_500">$500</div>
+          <div class="box points catergory4 value500" id="question4_500">$500</div>
+          <div class="box points catergory5 value500" id="question5_500">$500</div>
+          <div class="box points catergory6 value500" id="question6_500">$500</div>
         </div>
       </div>
  
-      <div class="userInput">
-        <label>Answer Here:</label>
-        <!-- This code allows the player to input an answer -->
-        <input
-          type="text"
-          required
-          minlength="1"
-          maxlength="20"
-          size="10"
-          placeholder="Answer Here"
-        />
-      </div>
 
-      <div class="answers">
-        <!-- Selector Buttons -->
-        <div class="answer">Guess Button</div>
-        <div class="answer">Pass Button</div>
-      </div>
 
       <div class="score">
         <!--TODO This will need to update to reflect each Player's Score -->
