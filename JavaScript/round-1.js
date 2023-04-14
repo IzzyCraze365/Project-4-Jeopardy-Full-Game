@@ -32,51 +32,44 @@ let selection1 = placeholderQuestions
 .filter((cat) => cat.category === categoryList[0])
 .slice(5);
  console.log("Length of selection 1",selection1[0],selection1.length); //! Test
-/*let selection2 = placeholderQuestions
+let selection2 = placeholderQuestions
 .filter((cat) => cat.category === categoryList[1])
 .slice(5);
-console.log("Length of selection 1",selection1.length); //! Test
 let selection3 = placeholderQuestions
 .filter((cat) => cat.category === categoryList[2])
 .slice(5);
-console.log("Length of selection 1",selection1.length); //! Test
 let selection4 = placeholderQuestions
 .filter((cat) => cat.category === categoryList[3])
 .slice(5);
-console.log("Length of selection 1",selection1.length); //! Test
 let selection5 = placeholderQuestions
 .filter((cat) => cat.category === categoryList[4])
 .slice(5);
-console.log("Length of selection 1",selection1.length); //! Test
 let selection6 = placeholderQuestions
 .filter((cat) => cat.category === categoryList[5])
 .slice(5);
-console.log("Length of selection 1",selection1.length); //! Test */
+
 
 
 // Populate the Board's Catergories
-categoryName1.innerText = selection1[1].category;
-console.log("category1 Name",categoryName1.category)//! TEST
-categoryName2.innerText = categoryList[1];
-categoryName3.innerText = categoryList[2];
-categoryName4.innerText = categoryList[3];
-categoryName5.innerText = categoryList[4];
-categoryName6.innerText = categoryList[5];
+categoryName1.innerText = selection1[0].category;
+categoryName2.innerText = selection2[0].category;
+categoryName3.innerText = selection3[0].category;
+categoryName4.innerText = selection4[0].category;
+categoryName5.innerText = selection5[0].category;
+categoryName6.innerText = selection6[0].category;
 
 
 
 questionButton.forEach((item) => {
   item.addEventListener("click", () => {
   modal.style.display = "block";
-  console.log("Question Button Clicked", placeholderQuestions, typeof placeholderQuestions)
-  popupQuestion.innerText = placeholderQuestions;
-
-
-
+  let questionNumber = item;
+  console.log("questionNumber", questionNumber);//! TEST
+  console.log("Question Button Clicked, what is Selection 1", selection1, typeof selection1);//! TEST
+  popupQuestion.innerText = selection1[item].question;//TODO this line is broken
+  console.log("Question Button Clicked", popupQuestion);
 }
   )})
-
-
 
 
 
