@@ -43,6 +43,7 @@
             <!-- This code allows the player to input an answer -->
             <input
               type="text"
+              id="playerAnswer"
               required
               minlength="1"
               maxlength="20"
@@ -53,15 +54,15 @@
     
           <div class="answers">
             <!-- Selector Buttons -->
-            <div class="answer close">Guess Button</div>
-            <div class="answer close">Pass Button</div>
+            <div class="answer close" id="guess-btn">Guess</div>
+            <div class="answer close" id="pass-btn">Pass</div>
           </div>
         <span class="close">&times;</span> <!-- Addition for Modal -->
       
       </div></div>
         <div class="box question">
           <!-- Makes the Grid for the Questions -->
-          <div class="box points catergory1 value100" id="question1_100">$100</div>
+          <div class="box points catergory1 value100 " id="question1_100">$100</div>
           <div class="box points catergory2 value100" id="question2_100">$100</div>
           <div class="box points catergory3 value100" id="question3_100">$100</div>
           <div class="box points catergory4 value100" id="question4_100">$100</div>

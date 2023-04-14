@@ -81,11 +81,11 @@
   text-align: center;
   font-size: 2em;
   grid-template-areas: /* this is how you organize your website into a grid */
-    "question1_1 question1_2 question1_3 question1_4 question1_5 question1_6"
-    "question2_1 question2_2 question2_3 question2_4 question2_5 question2_6"
-    "question3_1 question3_2 question3_3 question3_4 question3_5 question3_6"
-    "question4_1 question4_2 question4_3 question4_4 question4_5 question4_6"
-    "question5_1 question5_2 question5_3 question5_4 question5_5 question5_6";
+    "question1_100 question2_100 question3_100 question4_100 question5_100 question6_100"
+    "question1_200 question2_200 question3_200 question4_200 question5_200 question6_200"
+    "question1_300 question2_300 question3_300 question4_300 question5_300 question6_300"
+    "question1_400 question2_400 question3_400 question4_400 question5_400 question6_400"
+    "question1_500 question2_500 question3_500 question4_500 question5_500 question6_500";
   /* background-color: var(--questionBackground); */
   margin: 0 10%;
 }
@@ -93,95 +93,94 @@
   background-color: var(--questionBackground);
 }
 /* Each question Class (below) ius being called by the grid-template-area (above) */
-.question1_1 {
-  grid-area: question1_1;
+#question1_100 {
+  grid-area: question1_100;
 }
-.question1_2 {
-  grid-area: question1_2;
+#question1_200 {
+  grid-area: question1_200;
 }
-.question1_3 {
-  grid-area: question1_3;
+#question1_300 {
+  grid-area: question1_300;
 }
-.question1_4 {
-  grid-area: question1_4;
+#question1_400 {
+  grid-area: question1_400;
 }
-.question1_5 {
-  grid-area: question1_5;
+#question1_500 {
+  grid-area: question1_500;
 }
-.question1_6 {
-  grid-area: question1_6;
+#question2_100 {
+  grid-area: question2_100;
 }
-.question2_1 {
-  grid-area: question2_1;
+#question2_200 {
+  grid-area: question2_200;
 }
-.question2_2 {
-  grid-area: question2_2;
+#question2_300 {
+  grid-area: question2_300;
 }
-.question2_3 {
-  grid-area: question2_3;
+#question2_400 {
+  grid-area: question2_400;
 }
-.question2_4 {
-  grid-area: question2_4;
+#question2_500 {
+  grid-area: question2_500;
+}#question3_100 {
+  grid-area: question3_100;
 }
-.question2_5 {
-  grid-area: question2_5;
+#question3_200 {
+  grid-area: question3_200;
 }
-.question2_6 {
-  grid-area: question2_6;
+#question3_300 {
+  grid-area: question3_300;
 }
-.question3_1 {
-  grid-area: question3_1;
+#question3_400 {
+  grid-area: question3_400;
 }
-.question3_2 {
-  grid-area: question3_2;
+#question3_500 {
+  grid-area: question3_500;
 }
-.question3_3 {
-  grid-area: question3_3;
+#question4_100 {
+  grid-area: question4_100;
 }
-.question3_4 {
-  grid-area: question3_4;
+#question4_200 {
+  grid-area: question4_200;
 }
-.question3_5 {
-  grid-area: question3_5;
+#question4_300 {
+  grid-area: question4_300;
 }
-.question3_6 {
-  grid-area: question3_6;
+#question4_400 {
+  grid-area: question4_400;
 }
-.question4_1 {
-  grid-area: question4_1;
+#question4_500 {
+  grid-area: question4_500;
 }
-.question4_2 {
-  grid-area: question4_2;
+#question5_100 {
+  grid-area: question5_100;
 }
-.question4_3 {
-  grid-area: question4_3;
+#question5_200 {
+  grid-area: question5_200;
 }
-.question4_4 {
-  grid-area: question4_4;
+#question5_300 {
+  grid-area: question5_300;
 }
-.question4_5 {
-  grid-area: question4_5;
+#question5_400 {
+  grid-area: question5_400;
 }
-.question4_6 {
-  grid-area: question4_6;
+#question5_500 {
+  grid-area: question5_500;
 }
-.question5_1 {
-  grid-area: question5_1;
+#question6_100 {
+  grid-area: question6_100;
 }
-.question5_2 {
-  grid-area: question5_2;
+#question6_200 {
+  grid-area: question6_200;
 }
-.question5_3 {
-  grid-area: question5_3;
+#question6_300 {
+  grid-area: question6_300;
 }
-.question5_4 {
-  grid-area: question5_4;
+#question6_400 {
+  grid-area: question6_400;
 }
-.question5_5 {
-  grid-area: question5_5;
-}
-.question5_6 {
-  grid-area: question5_6;
+#question6_500 {
+  grid-area: question6_500;
 }
 
 /* Scores are organized in their own seperate Grid */

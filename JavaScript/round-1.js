@@ -2,84 +2,77 @@
 // Jeopardy Board Part 2 - Adding functionality
 // John Isabella III
 
-const placeholderQuestions = [
-    {
-      category: "Nature",
-      question: "The human heart has how many chambers?",
-      answer: "4",
-    },
-    {
-      category: "Nature",
-      question: "What is the largest animal currently on Earth?",
-      answer: "Blue Whale",
-    },
-    {
-      category: "Nature",
-      question: "What is the hottest planet in the Solar System?",
-      answer: "Venus",
-    },
-    {
-      category: "Nature",
-      question: "What is the first element on the periodic table?",
-      answer: "Hydrogen",
-    },];
+import placeholderQuestions from "../scripts/placeholder-questions";
+//console.log("Here are the Questions",placeholderQuestions);//! TEST
 
-    var modal = document.getElementById("modal");
+//List of Variables
+var modal = document.querySelector("#modal");
+let playerAnswer = document.querySelector("#playerAnswer"); //Going Fishing
+console.log("User Input =", playerAnswer);
+let questionButton = document.querySelectorAll(".points"); //Going Fishing
+let guessButton = document.getElementById("guess-btn"); //Going Fishing
+let passButton = document.getElementById("pass-btn"); //Going Fishing
+let catergoryList = ["Nature", "Animals", "Computers","Mythology","History","General","Final"] // TODO Empty Array
+let Player1Name = "John";
+let Player1Score = 0;
+let Player2Name = "Rob";
+let Player2Score = 0;
 
-// Select Questions
+// Select the Boards Catergories
+let catergoryName1 = document.querySelector("#catergory1");
+console.log("Catergory1",catergoryName1)
+console.log("Catergory1 =", catergory1);//! TEST
+let catergoryName2 = document.querySelector("#catergory2");
+let catergoryName3 = document.querySelector("#catergory3");
+let catergoryName4 = document.querySelector("#catergory4");
+let catergoryName5 = document.querySelector("#catergory5");
+let catergoryName6 = document.querySelector("#catergory6");
+let popupQuestion = document.querySelector("#questionInsideModal");
 
-let startingCatergories = [Nature]; // Randomly selects catergories
-
-let questionSelector = document.querySelectorAll(".points");
-console.log("questionSelector",questionSelector, typeof questionSelector); //! Test
-//node list loop trhough and apply event listener
-
-//let questionInformation = await 
-
-for (let i = 0; i < questionSelector.length; i++) {
-    questionSelector[i].addEventListener("click",() => revealQuestion(i));  
-    //questionSelector[i].addEventListener("click", ()=>console.log("TEST 4"));  //! TEST
-    };
-
-//! TEST FUNCTION
-let catergory1 = placeholderQuestions
-.filter((cat) => cat.category === "Nature")
-.slice(5);
-
-//function selectStartingCatergories(){}
-
-// TODO function populateCatergory from DOM Displaying Data
-function selectStartingQuestions(){
-  //let catergoryNumber = x;
-  for(let i = 1; i <7; i++){
-    let questionInfo = ;
-    return `question${i}_${catergoryNumber+1}`
-
-}}
+// Populate the Board's Catergories
+catergoryName1.innerText = titleCase(catergoryList[0]);
+catergoryName2.innerText = titleCase(catergoryList[1]);
+catergoryName3.innerText = titleCase(catergoryList[2]);
+catergoryName4.innerText = titleCase(catergoryList[3]);
+catergoryName5.innerText = titleCase(catergoryList[4]);
+catergoryName6.innerText = titleCase(catergoryList[5]);
 
 
-    // pass to revel question what index it goes to
-// TODO to Display questions use pokedex
-    function revealQuestion(questionIndex){
-    //const spinnyBoyz = document.getElementsByClassName("points");  
-    console.log("Question Index",questionIndex); //! Test
-   /*  modal.style.display = "block";
-    //spinnyBoyz.classList.toggle("spin");
-    questionSelector(questionIndex) => {
-    let revealQuestionText = document.createElement("p");
-    revealQuestionText.textContent = item;
-    console.log("MIDPOINT"); //! Test
-    let poolParty = document.getElementById("jeopardyBoard");
-    poolParty = revealQuestionText; //.appendChild(revealQuestionText);
-    console.log("Appended"); //! Test
-        });
-        console.log("Post Append"); //! Test */
-      }
 
-   /* 
-    let questionTextRevealed = placeholderQuestion[0]//randomizeQuestions();
-    questionTextRevealed.textContent = questionTextRevealed.question
-    console.log(questionTextRevealed);
-    return  */
+questionButton.forEach((item) => {
+  item.addEventListener("click", () => {
+  modal.style.display = "block";
+  console.log("Question Button Clicked", placeholderQuestions, typeof placeholderQuestions)
+  popupQuestion.innerText = placeholderQuestions;
 
 
+
+}
+  )})
+
+
+
+
+
+guessButton.onclick = function() {
+  console.log("Guess Button Clicked");
+  modal.style.display = "none";
+}
+passButton.onclick = function() {
+  console.log("Pass Button Clicked");
+  modal.style.display = "none"; 
+}
+
+
+// Capitalize Strings
+function titleCase(myString) {
+  return (myString
+    .split(" ")
+    .map((word) => {
+      word = word.trim();
+      let firstLetter1 = word.charAt(0).toUpperCase();
+      let restOfWord1 = word.slice(1).toLowerCase();
+      return firstLetter1 + restOfWord1;
+    })
+    .join(" "));
+}
