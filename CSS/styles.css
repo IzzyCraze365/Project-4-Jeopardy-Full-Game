@@ -89,18 +89,18 @@ img {
   background-color: var(--backgroundHover);
 }
 
-/*! for "catergory" class see grid.css */
+/*! for "category" class see grid.css */
 /*! for "container" class see grid.css */
 
-/* "finalJeopardy" class is a container for the final Catergory & Question */
+/* "finalJeopardy" class is a container for the final category & Question */
 .finalJeopardy {
   grid-area: finalJeopardy;
   text-align: center;
 }
 
-/* "finalCatergory" class is for the Catergory in the Final Round */
-.finalCatergory {
-  grid-area: finalCatergory;
+/* "finalcategory" class is for the category in the Final Round */
+.finalcategory {
+  grid-area: finalcategory;
   height: fit-content;
   font-size: 6em;
   color: var(--buttonColor);
@@ -161,7 +161,7 @@ img {
   margin: 0 10%;
 }
 
-/* "jeopardyBoard" class is a container for the "catergory" & "question" classes */
+/* "jeopardyBoard" class is a container for the "category" & "question" classes */
 /* TODO currently not used, but useful to have in reserve*/
 .jeopardyBoard {
 }
