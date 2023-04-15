@@ -2,102 +2,108 @@
 // Jeopardy Board Part 2 - Adding functionality
 // John Isabella III
 
-import placeholderQuestions from "../scripts/placeholder-questions"
-console.log(placeholderQuestions)
+import placeholderQuestions from "../scripts/placeholder-questions.js";
+//console.log("Here are the Questions");//! TEST
 
-    var modal = document.getElementById("modal");
+//List of Variables
+var modal = document.querySelector("#modal");
+let playerAnswer = document.querySelector("#playerAnswer"); //Going Fishing
+console.log("User Input =", playerAnswer);
+let questionButton = document.querySelectorAll(".points"); //Going Fishing
+let guessButton = document.getElementById("guess-btn"); //Going Fishing
+let passButton = document.getElementById("pass-btn"); //Going Fishing
+let categoryList = ["Nature", "Animals", "Computers","Mythology","History","General","Final"] // TODO Empty Array
+let player1Name = "John";
+let player1Score = document.querySelector(".score1");
+let score1 = 100; //! TEST
+let player2Name = "Rob";
+let player2Score = document.querySelector(".score2");
 
-// Select Questions
 
-let startingCatergories = ["Nature"]; // Randomly selects catergories
+// Select the Boards Catergories (from HTML)
+let categoryName1 = document.querySelector("#category1");
+let categoryName2 = document.querySelector("#category2");
+let categoryName3 = document.querySelector("#category3");
+let categoryName4 = document.querySelector("#category4");
+let categoryName5 = document.querySelector("#category5");
+let categoryName6 = document.querySelector("#category6");
+let popupQuestion = document.querySelector("#popupInsideModal");
 
-let questionSelector = document.querySelectorAll(".points");
-console.log("questionSelector",questionSelector, typeof questionSelector); //! Test
-//node list loop trhough and apply event listener
-
-//let questionInformation = await 
-
-for (let i = 0; i < questionSelector.length; i++) {
-    questionSelector[i].addEventListener("click",() => revealQuestion(i));  
-    //questionSelector[i].addEventListener("click", ()=>console.log("TEST 4"));  //! TEST
-    };
-
-//! TEST FUNCTION
-let category1 = placeholderQuestions
-.filter((cat) => cat.category === "Nature")
+// Assign values to the Catergories
+let selection1 = placeholderQuestions
+.filter((cat) => cat.category === categoryList[0])
+.slice(5);
+ console.log("Length of selection 1",selection1[0],selection1.length); //! Test
+let selection2 = placeholderQuestions
+.filter((cat) => cat.category === categoryList[1])
+.slice(5);
+let selection3 = placeholderQuestions
+.filter((cat) => cat.category === categoryList[2])
+.slice(5);
+let selection4 = placeholderQuestions
+.filter((cat) => cat.category === categoryList[3])
+.slice(5);
+let selection5 = placeholderQuestions
+.filter((cat) => cat.category === categoryList[4])
+.slice(5);
+let selection6 = placeholderQuestions
+.filter((cat) => cat.category === categoryList[5])
 .slice(5);
 
-console.log("Catyergory1 Length =", category1.length);//! TEST
-
-//function selectStartingCatergories(){}
-
-// TODO function populatecategory from DOM Displaying Data
 
 
+// Populate the Board's Catergories
+categoryName1.innerText = selection1[0].category;
+categoryName2.innerText = selection2[0].category;
+categoryName3.innerText = selection3[0].category;
+categoryName4.innerText = selection4[0].category;
+categoryName5.innerText = selection5[0].category;
+categoryName6.innerText = selection6[0].category;
+//let categoryName1 = document.querySelector("#category1");
+
+// Populate the Questions
+// TODO make this look neater
+let newQuestion = document.createElement("p");
+let cat1_100 = document.querySelector("#question1_100");
+cat1_100.addEventListener("click",()=>{
+  newQuestion.textContent = selection1[0].question;
+  console.log("newQuestion",  newQuestion.textContent);
+  
+  console.log("Selection1[0]",  selection1[0]);//! TEST
+  modal.style.display = "block";
+  popupQuestion.textContent = selection1[0].question;
+  //console.log("Click cat1_100",  popupQuestion.textContent);//! TEST
+})
+
+let cat1_200 = document.querySelector("#question1_200");
+cat1_200.addEventListener("click",()=>{
+  newQuestion.textContent = selection1[1].question;
+  modal.style.display = "block";
+  popupQuestion.textContent = selection1[1].question;
+})
 
 
-function selectStartingQuestions(elementTitleId,
-  elementQuestionClass,
-  categoryFilteredArray
+guessButton.onclick = function() {
+  console.log("Guess Button Clicked");
+  modal.style.display = "none";
 
-){
-debugger;
-let elementTitle = document.getElementById(elementTitleId);
-let title = categoryFilteredArray[0].category;
-elementTitle.textContent = title;
+}
+passButton.onclick = function() {
+  console.log("Pass Button Clicked");
+  modal.style.display = "none";
+  player1Score.innertext = `Player 1's Score: ${score1}`
+}
 
-let questions = document.querySelectorAll(elementQuestionClass);
 
-questions.forEach((item, index) => {
-  // Console Log Item
-  item.innerHTML = `${categoryFilteredArray[index].question} 
-  <input type="text" class="answer-${title
+// Capitalize Strings
+function titleCase(myString) {
+  return (myString
     .split(" ")
-    .join("-")
-    .toLowerCase()}" style="display:block"/>`;
-});
+    .map((word) => {
+      word = word.trim();
+      let firstLetter1 = word.charAt(0).toUpperCase();
+      let restOfWord1 = word.slice(1).toLowerCase();
+      return firstLetter1 + restOfWord1;
+    })
+    .join(" "));
 }
-
-let category1Answers = document.querySelectorAll(".category1.answers");
-console.log("category1 Answers =",category1Answers);
-
-for (let i = 0; i < category1Answers.length; i++) {
-  category1Answers[i].addEventListener("keyup", () => {
-    let answer = category1Answers[i].value.toLowerCase();
-    let actualAnswer = category1[i].answer.toLowerCase();
-    if (answer == actualAnswer) {
-      console.log("Answer is Correct"); //! TEST 
-      category1Answers[i].style.backgroundColor = "lightgreen";
-    } else {
-      console.log("Answer is Incorrect"); //! TEST 
-      category1Answers[i].style.backgroundColor = "red";
-    }
-  });
-}
-
-
-    // pass to revel question what index it goes to
-// TODO to Display questions use pokedex
-    function revealQuestion(questionIndex){
-    //const spinnyBoyz = document.getElementsByClassName("points");  
-    console.log("Question Index",questionIndex); //! Test
-     modal.style.display = "block";
-    //spinnyBoyz.classList.toggle("spin");
-   /*  questionSelector(questionIndex) => {
-    let revealQuestionText = document.createElement("p");
-    revealQuestionText.textContent = item;
-    console.log("MIDPOINT"); //! Test
-    let poolParty = document.getElementById("jeopardyBoard");
-    poolParty = revealQuestionText; //.appendChild(revealQuestionText);
-    console.log("Appended"); //! Test
-        }; */
-        console.log("Post Append"); //! Test */
-      }
-
-   /* 
-    let questionTextRevealed = placeholderQuestion[0]//randomizeQuestions();
-    questionTextRevealed.textContent = questionTextRevealed.question
-    console.log(questionTextRevealed);
-    return  */
-
-
