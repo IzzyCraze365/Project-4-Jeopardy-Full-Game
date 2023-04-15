@@ -23,15 +23,15 @@ for (let i = 0; i < questionSelector.length; i++) {
     };
 
 //! TEST FUNCTION
-let catergory1 = placeholderQuestions
+let category1 = placeholderQuestions
 .filter((cat) => cat.category === "Nature")
 .slice(5);
 
-console.log("Catyergory1 Length =", catergory1.length);//! TEST
+console.log("Catyergory1 Length =", category1.length);//! TEST
 
 //function selectStartingCatergories(){}
 
-// TODO function populateCatergory from DOM Displaying Data
+// TODO function populatecategory from DOM Displaying Data
 
 
 
@@ -58,19 +58,19 @@ questions.forEach((item, index) => {
 });
 }
 
-let catergory1Answers = document.querySelectorAll(".catergory1.answers");
-console.log("Catergory1 Answers =",catergory1Answers);
+let category1Answers = document.querySelectorAll(".category1.answers");
+console.log("category1 Answers =",category1Answers);
 
-for (let i = 0; i < catergory1Answers.length; i++) {
-  catergory1Answers[i].addEventListener("keyup", () => {
-    let answer = catergory1Answers[i].value.toLowerCase();
-    let actualAnswer = catergory1[i].answer.toLowerCase();
+for (let i = 0; i < category1Answers.length; i++) {
+  category1Answers[i].addEventListener("keyup", () => {
+    let answer = category1Answers[i].value.toLowerCase();
+    let actualAnswer = category1[i].answer.toLowerCase();
     if (answer == actualAnswer) {
       console.log("Answer is Correct"); //! TEST 
-      catergory1Answers[i].style.backgroundColor = "lightgreen";
+      category1Answers[i].style.backgroundColor = "lightgreen";
     } else {
       console.log("Answer is Incorrect"); //! TEST 
-      catergory1Answers[i].style.backgroundColor = "red";
+      category1Answers[i].style.backgroundColor = "red";
     }
   });
 }
