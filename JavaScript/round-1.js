@@ -72,10 +72,15 @@ cat1_100.addEventListener("click",()=>{
   console.log("Selection1[0]",  selection1[0]);//! TEST
   modal.style.display = "block";
   popupQuestion.textContent = selection1[0].question;
-  console.log("Click cat1_100",  popupQuestion.textContent);//! TEST
+  //console.log("Click cat1_100",  popupQuestion.textContent);//! TEST
 })
 
-
+let cat1_200 = document.querySelector("#question1_200");
+cat1_200.addEventListener("click",()=>{
+  newQuestion.textContent = selection1[1].question;
+  modal.style.display = "block";
+  popupQuestion.textContent = selection1[1].question;
+})
 
 
 guessButton.onclick = function() {
