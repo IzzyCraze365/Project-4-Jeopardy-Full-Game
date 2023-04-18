@@ -64,6 +64,40 @@ categoryName6.innerText = selection6[0].category;
 // Populate the Questions // TODO make this look neater
 let newQuestion = document.createElement("p");
 
+
+//! Updated this with friend
+questionButton.forEach((item, index) => {
+  item.addEventListener("click", () => {
+  modal.style.display = "block";
+  let questionNumber = item;
+  console.log("index", index);
+
+  console.log(questionNumber, "Question Number");
+  console.log(questionNumber.classList);
+  let selectedcategory = questionNumber.classList[2];
+  console.log(Math.floor(index/6));
+  let selectedValue = Math.floor(index/6);
+  //let selectedValue = questionNumber.classList[3];
+  console.log("Narrow Down Question",selectedcategory,selectedValue);
+  displayQuestion(selectedcategory, selectedValue)
+  //console.log("questionNumber", questionNumber);//! TEST
+  //console.log("Question Button Clicked, what is Selection 1", selection1, typeof selection1);//! TEST
+  popupQuestion.innerText = selection1[item].question;//TODO this line is broken
+  //console.log("Question Button Clicked", popupQuestion);
+}
+  )})
+
+function displayQuestion(category, value){
+  console.log(category[value].question);
+  newQuestion.textContent = category[value].question;
+  
+
+}
+
+
+
+/* 
+
 let cat1_100 = document.querySelector("#question1_100");
 cat1_100.addEventListener("click",()=>{
   newQuestion.textContent = selection1[0].question;
@@ -276,7 +310,7 @@ cat6_500.addEventListener("click",()=>{
   modal.style.display = "block";
   popupQuestion.textContent = selection6[4].question;
 })
-
+ */
 
 // Modal Buttons
 guessButton.onclick = function() {
