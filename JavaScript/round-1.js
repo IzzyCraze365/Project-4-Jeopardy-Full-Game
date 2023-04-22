@@ -32,12 +32,13 @@ class Player {
 }
 
 let player1 = new Player("John", 0, 0);
-let player2 = new Player("Scarlem", 0, 0);
+let player2 = new Player("Rob", 0, 0);
 
 let score1 = document.querySelector(".score1");
 let score2 = document.querySelector(".score2");
 let currentPlayer = player1;
 let currentScore = score1;
+let questionCount = 0; // Keeps track of how many guesses
 
 //Initial Game State
 playerTurn.textContent = `${currentPlayer.name}'s Turn`;
@@ -91,11 +92,14 @@ let questionValue = 0; // placeholder value
 
 questionButton.forEach((questionBox) => {
   questionBox.addEventListener("click", () => {
+    questionCount = 0;
     modal.style.display = "block";
     console.log("questionBox=", questionBox, "type=", typeof questionBox); //! TEST
     let questionCategory = getButtonCategory(questionBox); // Locates the Key
     questionValue = getButtonValue(questionBox); // Locates the Index
     console.log(displayQuestion(questionCategory, questionValue)); //! TEST
+    questionBox.disabled = true;
+    questionBox.classList.add("disabled");
     newQuestion = displayQuestion(questionCategory, questionValue);
     popupQuestion.textContent = newQuestion.question; // Prints the Question in the Modal
   });
@@ -159,47 +163,40 @@ function scoreCheck(currentPlayer) {
 
 // Modal Buttons
 guessButton.onclick = function () {
+  questionCount++;
   console.log("Guess Button Clicked"); //! TEST
   console.log("Question", newQuestion); //! TEST
   console.log("Input answer", playerAnswer.value, typeof playerAnswer.value); //! TEST I NEED TO STOP FORGETTING ABOUT VALUE!!!!
   console.log("Correct answer", newQuestion.answer); //! TEST
   console.log("Question Value", questionValue, typeof questionValue); //! TEST
-  questionValue = (+questionValue + 1) * 100;
+  //questionValue = (+questionValue + 1) * 100;
   console.log("Question Value", questionValue, typeof questionValue); //! TEST
-  //playerAnswer = titleCase(playerAnswer);
-  if (titleCase(playerAnswer.value) === newQuestion.answer) {
+  if (playerAnswer.value.toUpperCase() === newQuestion.answer.toUpperCase()) {
     console.log("Correct Answer"); //! TEST
-    alert(`That is the Correct Answer \n It is ${currentPlayer.name}'s Turn.`);
-    currentPlayer.score += questionValue;
+    currentPlayer.score += (+questionValue + 1) * 100;
     currentScore.textContent = `${currentPlayer.name}'s Score: ${currentPlayer.score}`;
+    alert(`That is the Correct Answer \n It is ${currentPlayer.name}'s Turn.`);
+    modal.style.display = "none";
   } else {
     console.log("Wrong Answer"); //! TEST
-    currentPlayer.score -= questionValue;
+    currentPlayer.score -= (+questionValue + 1) * 100;
     currentScore.textContent = `${currentPlayer.name}'s Score: ${currentPlayer.score}`;
     currentPlayer = nextPlayerTurn();
-    alert(`That is Incorrect \n It is now ${currentPlayer.name}'s Turn.`);
     currentScore = scoreCheck(currentPlayer);
+    alert(`That is Incorrect \n It is now ${currentPlayer.name}'s Turn.`);
   }
-  modal.style.display = "none";
+  if (questionCount === 2) {
+    modal.style.display = "none";
+  }
 };
 
 passButton.onclick = function () {
+  questionCount++;
   console.log("Pass Button Clicked"); //! TEST
-  modal.style.display = "none";
+  if (questionCount === 2) {
+    modal.style.display = "none";
+  }
   currentPlayer = nextPlayerTurn();
-  alert(`It is now ${currentPlayer.name}'s Turn.`);
   currentScore = scoreCheck(currentPlayer);
+  alert(`It is now ${currentPlayer.name}'s Turn.`);
 };
-
-// Capitalize Strings
-function titleCase(myString) {
-  return myString
-    .split(" ")
-    .map((word) => {
-      word = word.trim();
-      let firstLetter1 = word.charAt(0).toUpperCase();
-      let restOfWord1 = word.slice(1).toLowerCase();
-      return firstLetter1 + restOfWord1;
-    })
-    .join(" ");
-}

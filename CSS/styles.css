@@ -68,6 +68,7 @@ img {
 }
 
 /* "button" class is used for page navigation, moving from 1 round to the next */
+
 .button {
   grid-area: button;
   display: inline-flex;
@@ -91,6 +92,18 @@ img {
 
 /*! for "category" class see grid.css */
 /*! for "container" class see grid.css */
+
+/* "disabled" makes a used button disappear */
+.disabled {
+  color: var(--questionBackground) !important;
+  background-color: var(--questionBackground) !important;
+  border-color: var(----questionBackground) !important;
+}
+/* "button:hover" shows when a button is selected */
+.disabled:hover {
+  color: var(--questionBackground) !important;
+  background-color: var(--questionBackground) !important;
+}
 
 /* "finalJeopardy" class is a container for the final category & Question */
 .finalJeopardy {
