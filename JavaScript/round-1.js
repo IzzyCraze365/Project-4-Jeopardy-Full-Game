@@ -1,19 +1,17 @@
 // Project: Week 4
 // Jeopardy Board Part 2 - Adding functionality
 // John Isabella III
+// ROUND 1
 
 import placeholderQuestions from "../scripts/placeholder-questions.js";
-//console.log("Here are the Questions");//! TEST
 
 //List of Variables
 var modal = document.querySelector("#modal");
 let playerAnswer = document.querySelector("#playerAnswer"); //Going Fishing
-console.log("User Input =", playerAnswer); //! TEST
 let questionButton = document.querySelectorAll(".points"); //Going Fishing
 let guessButton = document.getElementById("guess-btn"); //Going Fishing
 let passButton = document.getElementById("pass-btn"); //Going Fishing
 let playerTurn = document.getElementById("playerTurn"); //Going Fishing
-let nextRoundButton = document.getElementById("nextRound"); //Going Fishing
 
 let categoryList = [
   "Nature",
@@ -50,24 +48,24 @@ score2.textContent = `${player2.name}'s Score: ${player2.score}`;
 // Assign values to the categories
 let selectedQuestions = {
   // This is an Object
-  selectedQuestion1: placeholderQuestions
-    .filter((cat) => cat.category === categoryList[0])
-    .slice(5),
-  selectedQuestion2: placeholderQuestions
-    .filter((cat) => cat.category === categoryList[1])
-    .slice(5),
-  selectedQuestion3: placeholderQuestions
-    .filter((cat) => cat.category === categoryList[2])
-    .slice(5),
-  selectedQuestion4: placeholderQuestions
-    .filter((cat) => cat.category === categoryList[3])
-    .slice(5),
-  selectedQuestion5: placeholderQuestions
-    .filter((cat) => cat.category === categoryList[4])
-    .slice(5),
-  selectedQuestion6: placeholderQuestions
-    .filter((cat) => cat.category === categoryList[5])
-    .slice(5),
+  selectedQuestion1: placeholderQuestions.filter(
+    (cat) => cat.category === categoryList[0]
+  ),
+  selectedQuestion2: placeholderQuestions.filter(
+    (cat) => cat.category === categoryList[1]
+  ),
+  selectedQuestion3: placeholderQuestions.filter(
+    (cat) => cat.category === categoryList[2]
+  ),
+  selectedQuestion4: placeholderQuestions.filter(
+    (cat) => cat.category === categoryList[3]
+  ),
+  selectedQuestion5: placeholderQuestions.filter(
+    (cat) => cat.category === categoryList[4]
+  ),
+  selectedQuestion6: placeholderQuestions.filter(
+    (cat) => cat.category === categoryList[5]
+  ),
 };
 
 // Select the Boards categories (from HTML)
@@ -100,10 +98,8 @@ questionButton.forEach((questionBox) => {
       nextRound.classList.remove("disabled");
     }
     modal.style.display = "block";
-    console.log("questionBox=", questionBox, "type=", typeof questionBox); //! TEST
     let questionCategory = getButtonCategory(questionBox); // Locates the Key
     questionValue = getButtonValue(questionBox); // Locates the Index
-    console.log(displayQuestion(questionCategory, questionValue)); //! TEST
     questionBox.disabled = true;
     questionBox.classList.add("disabled");
     newQuestion = displayQuestion(questionCategory, questionValue);
@@ -114,17 +110,13 @@ questionButton.forEach((questionBox) => {
 //! FUNCTIONS (Alphabetical Order)
 // Function that Selects the Question Data we are using
 function displayQuestion(category, value) {
-  console.log("Inside Function, DisplayingQuestion"); //! TEST
-  console.log("Category", category, "& Value ", value); //! TEST
   return selectedQuestions[category][value];
 }
 
 // Function that Figures out the Button's Category
 function getButtonCategory(selectedObject) {
-  console.log("Selected Object", selectedObject); //! TEST
   for (let i = 1; i < 7; i++) {
     if (selectedObject.className.split(" ").includes(`category${i}`)) {
-      console.log(`category${i}`); //! TEST
       return `selectedQuestion${i}`; // This gives me the correct key
     }
   }
@@ -132,10 +124,8 @@ function getButtonCategory(selectedObject) {
 
 // Function that Figures out the Button's Value
 function getButtonValue(selectedObject) {
-  console.log("Selected Object", selectedObject); //! TEST
   for (let i = 1; i < 7; i++) {
     if (selectedObject.className.split(" ").includes(`value${i}00`)) {
-      console.log(`$${i}00`); //! TEST
       return i - 1; // Gives me the Index Number of the Question
     }
   }
@@ -144,16 +134,13 @@ function getButtonValue(selectedObject) {
 // Function that Determines which Player's turn it is
 function nextPlayerTurn() {
   if (currentPlayer === player1) {
-    //alert("It is now Player 2's Turn."); //! TEST
     currentPlayer = player2;
   } else if (currentPlayer === player2) {
-    //alert("It is now Player 1's Turn."); //! TEST
     currentPlayer = player1;
   } else {
     alert("Error.");
   }
   playerTurn.textContent = `${currentPlayer.name}'s Turn`;
-  // alert(`It is now ${currentPlayer.name}'s Turn.`); //! TEST
   return currentPlayer;
 }
 
@@ -171,21 +158,12 @@ function scoreCheck(currentPlayer) {
 // Modal Buttons
 guessButton.onclick = function () {
   questionCount++;
-  console.log("Guess Button Clicked"); //! TEST
-  console.log("Question", newQuestion); //! TEST
-  console.log("Input answer", playerAnswer.value, typeof playerAnswer.value); //! TEST I NEED TO STOP FORGETTING ABOUT VALUE!!!!
-  console.log("Correct answer", newQuestion.answer); //! TEST
-  console.log("Question Value", questionValue, typeof questionValue); //! TEST
-  //questionValue = (+questionValue + 1) * 100;
-  console.log("Question Value", questionValue, typeof questionValue); //! TEST
   if (playerAnswer.value.toUpperCase() === newQuestion.answer.toUpperCase()) {
-    console.log("Correct Answer"); //! TEST
     currentPlayer.score += (+questionValue + 1) * 100;
     currentScore.textContent = `${currentPlayer.name}'s Score: ${currentPlayer.score}`;
     alert(`That is the Correct Answer \n It is ${currentPlayer.name}'s Turn.`);
     modal.style.display = "none";
   } else {
-    console.log("Wrong Answer"); //! TEST
     currentPlayer.score -= (+questionValue + 1) * 100;
     currentScore.textContent = `${currentPlayer.name}'s Score: ${currentPlayer.score}`;
     currentPlayer = nextPlayerTurn();
@@ -199,7 +177,6 @@ guessButton.onclick = function () {
 
 passButton.onclick = function () {
   questionCount++;
-  console.log("Pass Button Clicked"); //! TEST
   if (questionCount === 2) {
     modal.style.display = "none";
   }
