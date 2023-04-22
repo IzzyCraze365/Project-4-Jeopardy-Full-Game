@@ -12,6 +12,8 @@ console.log("User Input =", playerAnswer); //! TEST
 let questionButton = document.querySelectorAll(".points"); //Going Fishing
 let guessButton = document.getElementById("guess-btn"); //Going Fishing
 let passButton = document.getElementById("pass-btn"); //Going Fishing
+let playerTurn = document.getElementById("playerTurn"); //Going Fishing
+
 let categoryList = [
   "Nature",
   "Animals",
@@ -21,11 +23,26 @@ let categoryList = [
   "General",
   "Final",
 ]; // TODO Empty Array
-let player1Name = "John";
-let player1Score = document.querySelector(".score1");
-let score1 = 0; // TODO Placeholder
-let player2Name = "Rob";
-let player2Score = document.querySelector(".score2");
+
+class Player {
+  constructor(name, score, wager) {
+    (this.name = name), (this.score = score);
+    this.wager = wager;
+  }
+}
+
+let player1 = new Player("John", 0, 0);
+let player2 = new Player("Scarlem", 0, 0);
+
+let score1 = document.querySelector(".score1");
+let score2 = document.querySelector(".score2");
+let currentPlayer = player1;
+let currentScore = score1;
+
+//Initial Game State
+playerTurn.textContent = `${currentPlayer.name}'s Turn`;
+score1.textContent = `${player1.name}'s Score: ${player1.score}`;
+score2.textContent = `${player2.name}'s Score: ${player2.score}`;
 
 // Assign values to the categories
 let selectedQuestions = {
@@ -91,6 +108,7 @@ function displayQuestion(category, value) {
   return selectedQuestions[category][value];
 }
 
+// Function that Figures out the Button's Category
 function getButtonCategory(selectedObject) {
   console.log("Selected Object", selectedObject); //! TEST
   for (let i = 1; i < 7; i++) {
@@ -101,6 +119,7 @@ function getButtonCategory(selectedObject) {
   }
 }
 
+// Function that Figures out the Button's Value
 function getButtonValue(selectedObject) {
   console.log("Selected Object", selectedObject); //! TEST
   for (let i = 1; i < 7; i++) {
@@ -111,32 +130,65 @@ function getButtonValue(selectedObject) {
   }
 }
 
+// Function that Determines which Player's turn it is
+function nextPlayerTurn() {
+  if (currentPlayer === player1) {
+    //alert("It is now Player 2's Turn."); //! TEST
+    currentPlayer = player2;
+  } else if (currentPlayer === player2) {
+    //alert("It is now Player 1's Turn."); //! TEST
+    currentPlayer = player1;
+  } else {
+    alert("Error.");
+  }
+  playerTurn.textContent = `${currentPlayer.name}'s Turn`;
+  // alert(`It is now ${currentPlayer.name}'s Turn.`); //! TEST
+  return currentPlayer;
+}
+
+// Function that Determines which Player's turn it is
+function scoreCheck(currentPlayer) {
+  if (currentPlayer === player1) {
+    return score1;
+  } else if (currentPlayer === player2) {
+    return score2;
+  } else {
+    alert("Error.");
+  }
+}
 
 // Modal Buttons
-guessButton.onclick = function() {
+guessButton.onclick = function () {
   console.log("Guess Button Clicked"); //! TEST
   console.log("Question", newQuestion); //! TEST
   console.log("Input answer", playerAnswer.value, typeof playerAnswer.value); //! TEST I NEED TO STOP FORGETTING ABOUT VALUE!!!!
   console.log("Correct answer", newQuestion.answer); //! TEST
   console.log("Question Value", questionValue, typeof questionValue); //! TEST
-questionValue = ((+questionValue +1)*100)
-console.log("Question Value", questionValue, typeof questionValue); //! TEST
+  questionValue = (+questionValue + 1) * 100;
+  console.log("Question Value", questionValue, typeof questionValue); //! TEST
   //playerAnswer = titleCase(playerAnswer);
-  if(titleCase(playerAnswer.value) === newQuestion.answer){
-console.log("Correct Answer"); //! TEST
-score1 += questionValue;
-  }else{
+  if (titleCase(playerAnswer.value) === newQuestion.answer) {
+    console.log("Correct Answer"); //! TEST
+    alert(`That is the Correct Answer \n It is ${currentPlayer.name}'s Turn.`);
+    currentPlayer.score += questionValue;
+    currentScore.textContent = `${currentPlayer.name}'s Score: ${currentPlayer.score}`;
+  } else {
     console.log("Wrong Answer"); //! TEST
-    score1 -= questionValue;
+    currentPlayer.score -= questionValue;
+    currentScore.textContent = `${currentPlayer.name}'s Score: ${currentPlayer.score}`;
+    currentPlayer = nextPlayerTurn();
+    alert(`That is Incorrect \n It is now ${currentPlayer.name}'s Turn.`);
+    currentScore = scoreCheck(currentPlayer);
   }
   modal.style.display = "none";
-  player1Score.textContent = `Player 1's Score: ${score1}`
-}
+};
 
 passButton.onclick = function () {
   console.log("Pass Button Clicked"); //! TEST
   modal.style.display = "none";
-  player1Score.textContent = `Player 1's Score: ${score1}`;
+  currentPlayer = nextPlayerTurn();
+  alert(`It is now ${currentPlayer.name}'s Turn.`);
+  currentScore = scoreCheck(currentPlayer);
 };
 
 // Capitalize Strings
