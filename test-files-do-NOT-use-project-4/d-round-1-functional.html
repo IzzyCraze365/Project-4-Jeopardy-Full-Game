@@ -1,0 +1,192 @@
+<!-- HTML Week 4 (& Week 1) - Project -->
+<!-- Jeopardy! Project -->
+<!-- First Round Page -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jeopardy: Round 1</title>
+    <!-- Boot Strap reference link  "paste link into head of html" -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href=".\CSS\index.css" />
+    <!-- Linked to CSS -->
+  </head>
+  <body>
+    <h1 class="text-center">Jeopardy: Round 1</h1>
+    <!-- I added the lines below here -->
+    <div class="tub">
+      <div class="box header">First Round</div>
+      <div class="player" id="playerTurn">Player 1's Turn</div>
+      <!--TODO This will need to change to say the current player's turn -->
+      <div class="jeopardyBoard" id="jeopardyBoard">
+        <div class="box category">
+          <!-- Makes the row of Catergories -->
+          <div class="box category1" id="category1">category</div>
+          <div class="box category2" id="category2">category</div>
+          <div class="box category3" id="category3">category</div>
+          <div class="box category4" id="category4">category</div>
+          <div class="box category5" id="category5">category</div>
+          <div class="box category6" id="category6">category</div>
+        </div>
+        <div class="modal spin" id="modal">
+          <!-- SPIN HERE IS FUN -->
+          <div class="modal-content">
+            <h3 id="popupInsideModal">Modal Words</h3>
+            <div class="userInput">
+              <!-- This code allows the player to input an answer -->
+              <input
+                type="text"
+                id="playerAnswer"
+                required
+                minlength="1"
+                maxlength="200"
+                size="30"
+                placeholder="Answer Here"
+              />
+            </div>
+
+            <div class="answers">
+              <!-- Selector Buttons -->
+              <div class="answer close" id="guess-btn">Guess</div>
+              <div class="answer close" id="pass-btn">Pass</div>
+            </div>
+            <span class="close">&times;</span>
+            <!-- Addition for Modal -->
+          </div>
+        </div>
+        <div class="box question">
+          <!-- Makes the Grid for the Questions -->
+          <button class="box points category1 value100" id="question1_100">
+            $100
+          </button>
+          <button class="box points category2 value100" id="question2_100">
+            $100
+          </button>
+          <button class="box points category3 value100" id="question3_100">
+            $100
+          </button>
+          <button class="box points category4 value100" id="question4_100">
+            $100
+          </button>
+          <button class="box points category5 value100" id="question5_100">
+            $100
+          </button>
+          <button class="box points category6 value100" id="question6_100">
+            $100
+          </button>
+          <button class="box points category1 value200" id="question1_200">
+            $200
+          </button>
+          <button class="box points category2 value200" id="question2_200">
+            $200
+          </button>
+          <button class="box points category3 value200" id="question3_200">
+            $200
+          </button>
+          <button class="box points category4 value200" id="question4_200">
+            $200
+          </button>
+          <button class="box points category5 value200" id="question5_200">
+            $200
+          </button>
+          <button class="box points category6 value200" id="question6_200">
+            $200
+          </button>
+          <button class="box points category1 value300" id="question1_300">
+            $300
+          </button>
+          <button class="box points category2 value300" id="question2_300">
+            $300
+          </button>
+          <button class="box points category3 value300" id="question3_300">
+            $300
+          </button>
+          <button class="box points category4 value300" id="question4_300">
+            $300
+          </button>
+          <button class="box points category5 value300" id="question5_300">
+            $300
+          </button>
+          <button class="box points category6 value300" id="question6_300">
+            $300
+          </button>
+          <button class="box points category1 value400" id="question1_400">
+            $400
+          </button>
+          <button class="box points category2 value400" id="question2_400">
+            $400
+          </button>
+          <button class="box points category3 value400" id="question3_400">
+            $400
+          </button>
+          <button class="box points category4 value400" id="question4_400">
+            $400
+          </button>
+          <button class="box points category5 value400" id="question5_400">
+            $400
+          </button>
+          <button class="box points category6 value400" id="question6_400">
+            $400
+          </button>
+          <button class="box points category1 value500" id="question1_500">
+            $500
+          </button>
+          <button class="box points category2 value500" id="question2_500">
+            $500
+          </button>
+          <button class="box points category3 value500" id="question3_500">
+            $500
+          </button>
+          <button class="box points category4 value500" id="question4_500">
+            $500
+          </button>
+          <button class="box points category5 value500" id="question5_500">
+            $500
+          </button>
+          <button class="box points category6 value500" id="question6_500">
+            $500
+          </button>
+        </div>
+      </div>
+
+      <div class="score">
+        <!--TODO This will need to update to reflect each Player's Score -->
+        <div class="row">
+          <div class="score1 col-lg-6">Player 1's Score: 0</div>
+          <div class="score2 col-lg-6">Player 2's Score: 0</div>
+        </div>
+      </div>
+
+      <!-- Next Round Buttons -->
+      <div class="nextRound">
+        <nav class="links justify-content-center">
+          <a href="index.html" class="button">Main Menu</a>
+          <a href="round-2.html" class="button disabled" id="nextRound"
+            >Next Round</a
+          >
+        </nav>
+      </div>
+      <div class="box footer">
+        Welcome to Jeopardy.com, home of America's Favorite Quiz Show <br />
+        Working in conjunction with Upright Education <br />
+        and the Angry Coder Named John Foundation
+      </div>
+    </div>
+    <!-- List of Scripts Used -->
+    <script src="./scripts/index.js" type="module"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src=".\JavaScript\round-1.js"></script>
+  </body>
+</html>
