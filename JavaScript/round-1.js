@@ -13,6 +13,7 @@ let questionButton = document.querySelectorAll(".points"); //Going Fishing
 let guessButton = document.getElementById("guess-btn"); //Going Fishing
 let passButton = document.getElementById("pass-btn"); //Going Fishing
 let playerTurn = document.getElementById("playerTurn"); //Going Fishing
+let nextRoundButton = document.getElementById("nextRound"); //Going Fishing
 
 let categoryList = [
   "Nature",
@@ -38,7 +39,8 @@ let score1 = document.querySelector(".score1");
 let score2 = document.querySelector(".score2");
 let currentPlayer = player1;
 let currentScore = score1;
-let questionCount = 0; // Keeps track of how many guesses
+let questionCount = 0; // Keeps track of how many guesses the players make (max 2)
+let totalQuestionCounter = 0; // when this hits 30, the next round button enables
 
 //Initial Game State
 playerTurn.textContent = `${currentPlayer.name}'s Turn`;
@@ -93,6 +95,10 @@ let questionValue = 0; // placeholder value
 questionButton.forEach((questionBox) => {
   questionBox.addEventListener("click", () => {
     questionCount = 0;
+    totalQuestionCounter++;
+    if (totalQuestionCounter === 30) {
+      nextRound.classList.remove("disabled");
+    }
     modal.style.display = "block";
     console.log("questionBox=", questionBox, "type=", typeof questionBox); //! TEST
     let questionCategory = getButtonCategory(questionBox); // Locates the Key
@@ -105,6 +111,7 @@ questionButton.forEach((questionBox) => {
   });
 });
 
+//! FUNCTIONS (Alphabetical Order)
 // Function that Selects the Question Data we are using
 function displayQuestion(category, value) {
   console.log("Inside Function, DisplayingQuestion"); //! TEST

@@ -98,6 +98,7 @@ img {
   color: var(--questionBackground) !important;
   background-color: var(--questionBackground) !important;
   border-color: var(----questionBackground) !important;
+  pointer-events: none;
 }
 /* "button:hover" shows when a button is selected */
 .disabled:hover {
@@ -212,6 +213,10 @@ img {
 /* TODO currently not used, but useful to have in reserve */
 .nextRound {
   grid-area: nextRound;
+}
+
+#nextRound {
+  color: var(--buttonColor) !important;
 }
 
 /* "player" class to keep track of the active players turn on each page */
