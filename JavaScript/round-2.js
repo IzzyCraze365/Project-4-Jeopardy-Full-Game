@@ -7,11 +7,13 @@ import placeholderQuestions from "../scripts/placeholder-questions.js";
 
 //List of Variables
 var modal = document.querySelector("#modal");
-let playerAnswer = document.querySelector("#playerAnswer"); //Going Fishing
-let questionButton = document.querySelectorAll(".points"); //Going Fishing
 let guessButton = document.getElementById("guess-btn"); //Going Fishing
+let mainMenu = document.getElementById("mainMenu"); //Going Fishing
+let nextRound = document.getElementById("nextRound"); //Going Fishing
 let passButton = document.getElementById("pass-btn"); //Going Fishing
+let playerAnswer = document.querySelector("#playerAnswer"); //Going Fishing
 let playerTurn = document.getElementById("playerTurn"); //Going Fishing
+let questionButton = document.querySelectorAll(".points"); //Going Fishing
 
 let categoryList = [
   "Nature",
@@ -30,17 +32,38 @@ class Player {
   }
 }
 
-let player1 = new Player("John", 0, 0);
-let player2 = new Player("Rob", 0, 0);
+//  Splitting off from the entire URL to only grab the ? and what follows
+let queryString = window.location.search;
+console.log(queryString);
+// Creating a new instance of URLSearchParams so we can get the value if we supply the key
+let urlParams = new URLSearchParams(queryString);
+
+let player1 = new Player(
+  urlParams.get("player1Name"),
+  urlParams.get("player1Score"),
+  0
+);
+let player2 = new Player(
+  urlParams.get("player2Name"),
+  urlParams.get("player2Score"),
+  0
+);
+console.log("Player 1", player1, "Player 2", player2);
 
 let score1 = document.querySelector(".score1");
 let score2 = document.querySelector(".score2");
-let currentPlayer = player1;
+let currentPlayer = 0;
 let currentScore = score1;
 let questionCount = 0; // Keeps track of how many guesses the players make (max 2)
 let totalQuestionCounter = 0; // when this hits 30, the next round button enables
 
 //Initial Game State
+if (player1.score <= player2.score) {
+  // Determins who goes first in Round 2
+  currentPlayer = player1;
+} else {
+  currentPlayer = player2;
+}
 playerTurn.textContent = `${currentPlayer.name}'s Turn`;
 score1.textContent = `${player1.name}'s Score: ${player1.score}`;
 score2.textContent = `${player2.name}'s Score: ${player2.score}`;
@@ -94,7 +117,9 @@ questionButton.forEach((questionBox) => {
   questionBox.addEventListener("click", () => {
     questionCount = 0;
     totalQuestionCounter++;
-    if (totalQuestionCounter === 30) {
+    if (totalQuestionCounter === 1) {
+      //TODO Change this Back to 30 after Testing
+      mainMenu.classList.add("disabled");
       nextRound.classList.remove("disabled");
     }
     modal.style.display = "block";
@@ -129,6 +154,16 @@ function getButtonValue(selectedObject) {
       return i - 1; // Gives me the Index Number of the Question
     }
   }
+}
+
+nextRound.addEventListener("click", goToNextPage); // Once Enabled sends us to the next page
+// this function sets the variables for the next Round
+function goToNextPage() {
+  let player1Name = player1.name;
+  let player1Score = player1.score;
+  let player2Name = player2.name;
+  let player2Score = player2.score;
+  window.location.href = `./final-jeopardy.html?player1Name=${player1Name}&player2Name=${player2Name}&player1Score=${player1Score}&player2Score=${player2Score}`;
 }
 
 // Function that Determines which Player's turn it is

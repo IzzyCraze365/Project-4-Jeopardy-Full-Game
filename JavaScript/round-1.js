@@ -7,11 +7,13 @@ import placeholderQuestions from "../scripts/placeholder-questions.js";
 
 //List of Variables
 var modal = document.querySelector("#modal");
-let playerAnswer = document.querySelector("#playerAnswer"); //Going Fishing
-let questionButton = document.querySelectorAll(".points"); //Going Fishing
 let guessButton = document.getElementById("guess-btn"); //Going Fishing
+let mainMenu = document.getElementById("mainMenu"); //Going Fishing
+let nextRound = document.getElementById("nextRound"); //Going Fishing
 let passButton = document.getElementById("pass-btn"); //Going Fishing
+let playerAnswer = document.querySelector("#playerAnswer"); //Going Fishing
 let playerTurn = document.getElementById("playerTurn"); //Going Fishing
+let questionButton = document.querySelectorAll(".points"); //Going Fishing
 
 let categoryList = [
   "Nature",
@@ -30,8 +32,14 @@ class Player {
   }
 }
 
-let player1 = new Player("John", 0, 0);
-let player2 = new Player("Rob", 0, 0);
+//  Splitting off from the entire URL to only grab the ? and what follows
+let queryString = window.location.search;
+console.log(queryString);
+// Creating a new instance of URLSearchParams so we can get the value if we supply the key
+let urlParams = new URLSearchParams(queryString);
+
+let player1 = new Player(urlParams.get("player1Name"), 0, 0);
+let player2 = new Player(urlParams.get("player2Name"), 0, 0);
 
 let score1 = document.querySelector(".score1");
 let score2 = document.querySelector(".score2");
@@ -94,7 +102,9 @@ questionButton.forEach((questionBox) => {
   questionBox.addEventListener("click", () => {
     questionCount = 0;
     totalQuestionCounter++;
-    if (totalQuestionCounter === 30) {
+    if (totalQuestionCounter === 1) {
+      //TODO Change this Back to 30 after Testing
+      mainMenu.classList.add("disabled");
       nextRound.classList.remove("disabled");
     }
     modal.style.display = "block";
@@ -129,6 +139,16 @@ function getButtonValue(selectedObject) {
       return i - 1; // Gives me the Index Number of the Question
     }
   }
+}
+
+nextRound.addEventListener("click", goToNextPage); // Once Enabled sends us to the next page
+// this function sets the variables for the next Round
+function goToNextPage() {
+  let player1Name = player1.name;
+  let player1Score = player1.score;
+  let player2Name = player2.name;
+  let player2Score = player2.score;
+  window.location.href = `./round-2.html?player1Name=${player1Name}&player2Name=${player2Name}&player1Score=${player1Score}&player2Score=${player2Score}`;
 }
 
 // Function that Determines which Player's turn it is
