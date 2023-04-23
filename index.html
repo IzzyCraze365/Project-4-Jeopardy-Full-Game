@@ -34,11 +34,36 @@
         />
         <br />This is Jeopardy
       </div>
-
+    </div>
+    <div>
+      <div class="userInput">
+        <!-- This code allows the player to input an answer -->
+        <input
+        type="text"
+        id="player1Name"
+        minlength="0"
+        maxlength="50"
+        size="30"
+        placeholder="Player 1 Name"
+        />
+      </div>
+      <div class="userInput">
+        <!-- This code allows the player to input an answer -->
+        <input
+          type="text"
+          id="player2Name"
+          required
+          minlength="0"
+          maxlength="50"
+          size="30"
+          placeholder="Player 2 Name"
+        />
+      </div>
+    </div>
       <!-- Next Round Buttons -->
       <div class="nextRound">
         <nav class="links">
-          <a href="round-1.html" class="button">PLAY</a>
+          <a class="button" id="nextRound">PLAY</a>
         </nav>
       </div>
       <div class="box footer">
