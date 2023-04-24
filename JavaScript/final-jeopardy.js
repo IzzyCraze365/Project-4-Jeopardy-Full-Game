@@ -7,7 +7,8 @@
 import placeholderQuestions from "../scripts/placeholder-questions.js";
 
 //List of Variables
-
+var modal = document.querySelector("#modal");
+let questionButton = document.querySelectorAll(".points"); //Going Fishing
 let wagerButton = document.getElementById("wager-btn"); //Going Fishing
 
 let categoryList = [
@@ -92,19 +93,11 @@ categoryName.innerText = selectedQuestions.selectedQuestion[0].category;
 let newQuestion = document.createElement("p");
 let questionValue = 0; // placeholder value
 
-questionButton.forEach((questionBox) => {
-  questionBox.addEventListener("click", () => {
-    questionCount = 0;
-    totalQuestionCounter++;
+questionButton.addEventListener("click", () => {
     modal.style.display = "block";
-    let questionCategory = getButtonCategory(questionBox); // Locates the Key
-    questionValue = getButtonValue(questionBox); // Locates the Index
-    questionBox.disabled = true;
-    questionBox.classList.add("disabled");
     newQuestion = displayQuestion(questionCategory, questionValue);
     popupQuestion.textContent = newQuestion.question; // Prints the Question in the Modal
   });
-});
 
 //! FUNCTIONS (Alphabetical Order)
 // Function that Selects the Question Data we are using

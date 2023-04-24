@@ -104,7 +104,7 @@ categoryName6.innerText = selectedQuestions.selectedQuestion6[0].category;
 let newQuestion = document.createElement("p");
 let questionValue = 0; // placeholder value
 
-questionButton.forEach((questionBox) => {
+questionButton.forEach((questionBox) => { // TODO Need to clear the answer field after guess or pass is pushed
   questionBox.addEventListener("click", () => {
     questionCount = 0;
     totalQuestionCounter++;

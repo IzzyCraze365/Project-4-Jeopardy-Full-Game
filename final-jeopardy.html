@@ -25,25 +25,43 @@
     <!-- I added the lines below here -->
     <div class="tub">
       <div class="box header">Final Jeopardy</div>
-      <div class="player" id="playerTurn">Player 1's Turn</div>
+      <div class="player" id="playerTurn">Player 1's Turn</div> <!-- This line will have to go away -->
       <div class="finalJeopardy">
         <div class="box finalCategory">Final Category</div>
         <div class="box points finalQuestion" id="wager-btn">
           FINAL QUESTION
         </div>
-      </div>
-      <div class="bet">
-        <label>Place your Wager:</label>
+<!-- Modal Start -->
+        <div class="modal spin" id="modal">
+          <!-- SPIN HERE IS FUN -->
+          <div class="modal-content">
+            <h3 id="popupInsideModal">Modal Words</h3>
+            <div class="bet">
+              <label>Place your Wager:</label>
+      
+              <input
+                type="text"
+                required
+                minlength="1"
+                maxlength="8"
+                size="10"
+                placeholder="Willing to lose $?"
+              />
+            </div>
 
-        <input
-          type="text"
-          required
-          minlength="1"
-          maxlength="8"
-          size="10"
-          placeholder="Willing to lose $?"
-        />
+            <div class="answers">
+              <!-- Selector Buttons -->
+              <div class="answer close" id="guess-btn">Guess</div>
+              <div class="answer close" id="pass-btn">Pass</div>
+            </div>
+            <span class="close">&times;</span>
+            <!-- Addition for Modal -->
+          </div>
+        </div>
+<!-- Modal END -->
+
       </div>
+
       <div class="userInput">
         <label>Final Answer:</label>
         <input
