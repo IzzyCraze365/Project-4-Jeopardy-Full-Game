@@ -40,12 +40,12 @@ let urlParams = new URLSearchParams(queryString);
 
 let player1 = new Player(
   urlParams.get("player1Name"),
-  urlParams.get("player1Score"),
+  parseInt(urlParams.get("player1Score")),
   0
 );
 let player2 = new Player(
   urlParams.get("player2Name"),
-  urlParams.get("player2Score"),
+  parseInt(urlParams.get("player2Score")),
   0
 );
 console.log("Player 1", player1, "Player 2", player2);
@@ -58,15 +58,33 @@ let questionCount = 0; // Keeps track of how many guesses the players make (max 
 let totalQuestionCounter = 0; // when this hits 30, the next round button enables
 
 //Initial Game State
-if (player1.score <= player2.score) {
+if (player1.name === null) {
+  player1.name = "Player 1";
+}
+if (player2.name=== null) {
+  player2.name = "Player 2";
+}
+if (player1.score === null) {
+  player1.score = 0;
+}
+if (player2.score=== null) {
+  player2.score = 0;
+}
+if (player1.score < player2.score) {
   // Determins who goes first in Round 2
   currentPlayer = player1;
+}else if (player1.score > player2.score) {
+    // Determins who goes first in Round 2
+    currentPlayer = player2;
 } else {
-  currentPlayer = player2;
+  currentPlayer = player1;
 }
+scoreCheck(currentPlayer);
+console.log("Current Player",currentPlayer);//! TEST
 playerTurn.textContent = `${currentPlayer.name}'s Turn`;
 score1.textContent = `${player1.name}'s Score: ${player1.score}`;
 score2.textContent = `${player2.name}'s Score: ${player2.score}`;
+
 
 // Assign values to the categories
 let selectedQuestions = {
@@ -142,6 +160,8 @@ function displayQuestion(category, value) {
 function getButtonCategory(selectedObject) {
   for (let i = 1; i < 7; i++) {
     if (selectedObject.className.split(" ").includes(`category${i}`)) {
+      console.log("get button catergory", i, typeof i);//! TEST
+      console.log("get button catergory", `selectedQuestion${i}`, typeof `selectedQuestion${i}`);//! TEST
       return `selectedQuestion${i}`; // This gives me the correct key
     }
   }
@@ -151,6 +171,7 @@ function getButtonCategory(selectedObject) {
 function getButtonValue(selectedObject) {
   for (let i = 1; i < 7; i++) {
     if (selectedObject.className.split(" ").includes(`value${i}00`)) {
+      console.log("get button value", i, typeof i);//! TEST
       return i - 1; // Gives me the Index Number of the Question
     }
   }
@@ -194,33 +215,12 @@ function scoreCheck(currentPlayer) {
 guessButton.onclick = function () {
   questionCount++;
   if (playerAnswer.value.toUpperCase() === newQuestion.answer.toUpperCase()) {
+    console.log("questionValue",questionValue, typeof questionValue);//! TEST
     currentPlayer.score += (+questionValue + 1) * 200;
     currentScore.textContent = `${currentPlayer.name}'s Score: ${currentPlayer.score}`;
     alert(`That is the Correct Answer \n It is ${currentPlayer.name}'s Turn.`);
     modal.style.display = "none";
   } else {
-    // Assign values to the categories
-    let selectedQuestions = {
-      // This is an Object
-      selectedQuestion1: placeholderQuestions
-        .filter((cat) => cat.category === categoryList[0])
-        .slice(5),
-      selectedQuestion2: placeholderQuestions
-        .filter((cat) => cat.category === categoryList[1])
-        .slice(5),
-      selectedQuestion3: placeholderQuestions
-        .filter((cat) => cat.category === categoryList[2])
-        .slice(5),
-      selectedQuestion4: placeholderQuestions
-        .filter((cat) => cat.category === categoryList[3])
-        .slice(5),
-      selectedQuestion5: placeholderQuestions
-        .filter((cat) => cat.category === categoryList[4])
-        .slice(5),
-      selectedQuestion6: placeholderQuestions
-        .filter((cat) => cat.category === categoryList[5])
-        .slice(5),
-    };
     currentPlayer.score -= (+questionValue + 1) * 200;
     currentScore.textContent = `${currentPlayer.name}'s Score: ${currentPlayer.score}`;
     currentPlayer = nextPlayerTurn();

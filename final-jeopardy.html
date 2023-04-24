@@ -21,15 +21,16 @@
   </head>
   <body>
     <h1 class="text-center">Jeopardy: Final Round</h1>
- 
+
     <!-- I added the lines below here -->
     <div class="tub">
       <div class="box header">Final Jeopardy</div>
-      <!--TODO This will need to change to say the current player's turn -->
-      <div class="player">Player 1's Turn</div>
+      <div class="player" id="playerTurn">Player 1's Turn</div>
       <div class="finalJeopardy">
         <div class="box finalCategory">Final Category</div>
-        <div class="box points finalQuestion">FINAL QUESTION</div>
+        <div class="box points finalQuestion" id="wager-btn">
+          FINAL QUESTION
+        </div>
       </div>
       <div class="bet">
         <label>Place your Wager:</label>
@@ -59,7 +60,6 @@
       </div>
 
       <div class="score">
-        <!-- TODO This will need to update to reflect each Player's Score -->
         <div class="row">
           <div class="score1 col-lg-6">Player 1's Score: 0</div>
           <div class="score2 col-lg-6">Player 2's Score: 0</div>
@@ -69,7 +69,6 @@
       <!-- Next Round Buttons -->
       <div class="nextRound">
         <nav class="links">
-          <a href="round-2.html" class="button">Previous Round</a>
           <a href="index.html" class="button">Play Again</a>
         </nav>
       </div>

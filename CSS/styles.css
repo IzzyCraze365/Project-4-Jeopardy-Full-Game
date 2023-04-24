@@ -112,8 +112,8 @@ img {
   text-align: center;
 }
 
-/* "finalcategory" class is for the category in the Final Round */
-.finalcategory {
+/* "finalCategory" class is for the category in the Final Round */
+.finalCategory {
   grid-area: finalcategory;
   height: fit-content;
   font-size: 6em;

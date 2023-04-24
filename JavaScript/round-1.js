@@ -49,6 +49,12 @@ let questionCount = 0; // Keeps track of how many guesses the players make (max 
 let totalQuestionCounter = 0; // when this hits 30, the next round button enables
 
 //Initial Game State
+if (player1.name === null) {
+  player1.name = "Player 1";
+}
+if (player2.name=== null) {
+  player2.name = "Player 2";
+}
 playerTurn.textContent = `${currentPlayer.name}'s Turn`;
 score1.textContent = `${player1.name}'s Score: ${player1.score}`;
 score2.textContent = `${player2.name}'s Score: ${player2.score}`;
