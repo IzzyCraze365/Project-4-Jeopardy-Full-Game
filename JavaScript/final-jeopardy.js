@@ -9,15 +9,12 @@ import placeholderQuestions from "../scripts/placeholder-questions.js";
 //List of Variables
 var modal = document.querySelector("#modal");
 let questionButton = document.querySelector(".points"); //Going Fishing
+("finalQuestion-btn"); //Going Fishing
 let wagerButton = document.getElementById("wager-btn"); //Going Fishing
+let finalAnswerButton = document.getElementById("final-btn"); //Going Fishing
+let popupAnswers = document.querySelector(".popupAnswers"); //Going Fishing
 
 let categoryList = [
-  "Nature",
-  "Animals",
-  "Computers",
-  "Mythology",
-  "History",
-  "General",
   "Final",
 ]; // TODO Empty Array
 
@@ -27,6 +24,8 @@ class Player {
     this.wager = wager;
   }
 }
+
+let clickCount = 0;
 
 //  Splitting off from the entire URL to only grab the ? and what follows
 let queryString = window.location.search;
@@ -51,7 +50,6 @@ let score2 = document.querySelector(".score2");
 let currentPlayer = 0;
 let currentScore = score1;
 let questionCount = 0; // Keeps track of how many guesses the players make (max 2)
-let totalQuestionCounter = 0; // when this hits 30, the next round button enables
 
 //Initial Game State
 if (player1.name === null) {
@@ -79,25 +77,28 @@ playerTurn.textContent = `${currentPlayer.name}'s Turn`;
 score1.textContent = `${player1.name}'s Score: ${player1.score}`;
 score2.textContent = `${player2.name}'s Score: ${player2.score}`;
 
+// Assign values to the categories
+let finalQuestion = {
+  // This is an Object
+  finalQuestion0: placeholderQuestions.filter(
+    (cat) => cat.category === categoryList[0]
+  ),
+  };
 
-// Select the Boards categories (from HTML)
-let categoryName = document.querySelector("#category");
-let popupQuestion = document.querySelector("#popupInsideModal");
-
-// Populate the Board's category Names (Top Row)
-categoryName.innerText = selectedQuestions.selectedQuestion[0].category;
-
-//let categoryName1 = document.querySelector("#category1");
 
 // Populate the Questions // TODO make this look neater
 let newQuestion = document.createElement("p");
 let questionValue = 0; // placeholder value
 
+// Populate the Modal
+let wagerModal = document.querySelector("#popupInsideWagerModal");
+wagerModal.innerText = `FINAL CATEGORY \n "${finalQuestion.finalQuestion0[0].category}"`;
+popupAnswers.innerText = `${currentPlayer.name}'s Bet:`
+
 questionButton.addEventListener("click", () => {
     modal.style.display = "block";
-    newQuestion="Hello World"; //! TEST
+    //newQuestion= displayQuestion(categoryList[0], 0);; //! TEST
     //newQuestion = displayQuestion(questionCategory, questionValue);
-    popupQuestion.textContent = newQuestion; // Prints the Question in the Modal
   });
 
 //! FUNCTIONS (Alphabetical Order)
@@ -106,23 +107,34 @@ function displayQuestion(category, value) {
   return selectedQuestions[category][value];
 }
 
-// Function that Figures out the Button's Category
-function getButtonCategory(selectedObject) {
-  for (let i = 1; i < 7; i++) {
-    if (selectedObject.className.split(" ").includes(`category${i}`)) {
-      return `selectedQuestion${i}`; // This gives me the correct key
-    }
-  }
-}
 
-// Function that Figures out the Button's Value
-function getButtonValue(selectedObject) {
-  for (let i = 1; i < 7; i++) {
-    if (selectedObject.className.split(" ").includes(`value${i}00`)) {
-      return i - 1; // Gives me the Index Number of the Question
-    }
+// TODO get this to work
+wagerButton.onclick = function () {
+  clickCount++;
+ // while(clickCount <5){
+    clickCount++;
+  if (clickCount === 0) {
+    currentPlayer = nextPlayerTurn();
+    
+    popupAnswers.innerText = `${currentPlayer.name}'s Bet:`
+  }else if (clickCount === 2) {
+    popupAnswers.textcontent = `${currentPlayer}'s Bet `
+    clickCount++;
+    currentPlayer = nextPlayerTurn();
+  }else if (clickCount === 3) {
+    popupAnswers.textcontent = `${currentPlayer}'s Bet `
+    clickCount++;
+    currentPlayer = nextPlayerTurn();
+  }else if (clickCount === 4) {
+    popupAnswers.textcontent = `${currentPlayer}'s Bet `
+    clickCount++;
+    currentPlayer = nextPlayerTurn();
+    modal.style.display = "none";
   }
-}
+  }
+  
+  currentScore = scoreCheck(currentPlayer);
+//};
 
 // Function that Determines which Player's turn it is
 function nextPlayerTurn() {
@@ -149,7 +161,7 @@ function scoreCheck(currentPlayer) {
 }
 
 // Modal Buttons
-guessButton.onclick = function () {
+finalAnswerButton.onclick = function () {
   questionCount++;
   if (playerAnswer.value.toUpperCase() === newQuestion.answer.toUpperCase()) {
     currentPlayer.score += (+questionValue + 1) * 200;
@@ -168,4 +180,3 @@ guessButton.onclick = function () {
     modal.style.display = "none";
   }
 };
-
