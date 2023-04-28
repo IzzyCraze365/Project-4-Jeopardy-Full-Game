@@ -61,30 +61,29 @@ let totalQuestionCounter = 0; // when this hits 30, the next round button enable
 if (player1.name === null) {
   player1.name = "Player 1";
 }
-if (player2.name=== null) {
+if (player2.name === null) {
   player2.name = "Player 2";
 }
 if (player1.score === null) {
   player1.score = 0;
 }
-if (player2.score=== null) {
+if (player2.score === null) {
   player2.score = 0;
 }
 if (player1.score < player2.score) {
   // Determins who goes first in Round 2
   currentPlayer = player1;
-}else if (player1.score > player2.score) {
-    // Determins who goes first in Round 2
-    currentPlayer = player2;
+} else if (player1.score > player2.score) {
+  // Determins who goes first in Round 2
+  currentPlayer = player2;
 } else {
   currentPlayer = player1;
 }
 scoreCheck(currentPlayer);
-console.log("Current Player",currentPlayer);//! TEST
+console.log("Current Player", currentPlayer); //! TEST
 playerTurn.textContent = `${currentPlayer.name}'s Turn`;
 score1.textContent = `${player1.name}'s Score: ${player1.score}`;
 score2.textContent = `${player2.name}'s Score: ${player2.score}`;
-
 
 // Assign values to the categories
 let selectedQuestions = {
@@ -160,8 +159,12 @@ function displayQuestion(category, value) {
 function getButtonCategory(selectedObject) {
   for (let i = 1; i < 7; i++) {
     if (selectedObject.className.split(" ").includes(`category${i}`)) {
-      console.log("get button catergory", i, typeof i);//! TEST
-      console.log("get button catergory", `selectedQuestion${i}`, typeof `selectedQuestion${i}`);//! TEST
+      console.log("get button catergory", i, typeof i); //! TEST
+      console.log(
+        "get button catergory",
+        `selectedQuestion${i}`,
+        typeof `selectedQuestion${i}`
+      ); //! TEST
       return `selectedQuestion${i}`; // This gives me the correct key
     }
   }
@@ -171,7 +174,7 @@ function getButtonCategory(selectedObject) {
 function getButtonValue(selectedObject) {
   for (let i = 1; i < 7; i++) {
     if (selectedObject.className.split(" ").includes(`value${i}00`)) {
-      console.log("get button value", i, typeof i);//! TEST
+      console.log("get button value", i, typeof i); //! TEST
       return i - 1; // Gives me the Index Number of the Question
     }
   }
@@ -215,7 +218,7 @@ function scoreCheck(currentPlayer) {
 guessButton.onclick = function () {
   questionCount++;
   if (playerAnswer.value.toUpperCase() === newQuestion.answer.toUpperCase()) {
-    console.log("questionValue",questionValue, typeof questionValue);//! TEST
+    console.log("questionValue", questionValue, typeof questionValue); //! TEST
     currentPlayer.score += (+questionValue + 1) * 200;
     currentScore.textContent = `${currentPlayer.name}'s Score: ${currentPlayer.score}`;
     alert(`That is the Correct Answer \n It is ${currentPlayer.name}'s Turn.`);
@@ -227,6 +230,7 @@ guessButton.onclick = function () {
     currentScore = scoreCheck(currentPlayer);
     alert(`That is Incorrect \n It is now ${currentPlayer.name}'s Turn.`);
   }
+  playerAnswer.value = ""; // This clears the input field after each question
   if (questionCount === 2) {
     modal.style.display = "none";
   }

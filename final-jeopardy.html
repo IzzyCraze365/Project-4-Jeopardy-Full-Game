@@ -25,24 +25,28 @@
     <!-- I added the lines below here -->
     <div class="tub">
       <div class="box header">Final Jeopardy</div>
-      <div class="player" id="playerTurn">Player 1's Turn</div>
+      <div class="player" id="playerTurn">Player 1 vs. Player 2</div>
       <!-- This line will have to go away -->
       <div class="finalJeopardy">
         <div class="box finalCategory">Final Category</div>
         <div class="box points finalQuestion" id="finalQuestion-btn">
-          Click Here<br> for <br>FINAL QUESTION
+          Click Here<br />
+          for <br />FINAL QUESTION
         </div>
         <div></div>
         <!-- Modal Start -->
         <div class="modal spin" id="modal">
           <!-- SPIN HERE IS FUN -->
-        
+
           <div class="modal-content">
-            <h3 class ="popupInsideModal" id="popupInsideWagerModal">Wager Modal Words</h3>
+            <h3 class="popupInsideModal" id="popupInsideWagerModal">
+              Wager Modal Words
+            </h3>
             <div class="bet">
               <label class="finalColor popupAnswers">Johnny 1's Bet:</label>
 
               <input
+                id="finalText"
                 type="text"
                 required
                 minlength="1"
@@ -52,31 +56,13 @@
               />
             </div>
             <div class="answers">
-              <div id= "wager-btn" class="answer close">Wager Amount</div>
+              <div id="wager-btn" class="answer close">Wager Amount</div>
             </div>
 
             <!-- Addition for Modal -->
           </div>
         </div>
         <!-- Modal END -->
-      </div>
-
-      <div class="userInput">
-        <label>Final Answer:</label>
-        <input
-          type="text"
-          required
-          minlength="1"
-          maxlength="100"
-          size="10"
-          placeholder="Final Answer..."
-        />
-      </div>
-      <div class="answers">
-        <div class="answers">
-          <!-- Selector Buttons -->
-          <div class="answer close" id="final-btn">Submit Final Answer</div>
-        </div>
       </div>
 
       <div class="score">

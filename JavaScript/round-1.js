@@ -52,7 +52,7 @@ let totalQuestionCounter = 0; // when this hits 30, the next round button enable
 if (player1.name === null) {
   player1.name = "Player 1";
 }
-if (player2.name=== null) {
+if (player2.name === null) {
   player2.name = "Player 2";
 }
 playerTurn.textContent = `${currentPlayer.name}'s Turn`;
@@ -104,7 +104,7 @@ categoryName6.innerText = selectedQuestions.selectedQuestion6[0].category;
 let newQuestion = document.createElement("p");
 let questionValue = 0; // placeholder value
 
-questionButton.forEach((questionBox) => { // TODO Need to clear the answer field after guess or pass is pushed
+questionButton.forEach((questionBox) => {
   questionBox.addEventListener("click", () => {
     questionCount = 0;
     totalQuestionCounter++;
@@ -196,6 +196,7 @@ guessButton.onclick = function () {
     currentScore = scoreCheck(currentPlayer);
     alert(`That is Incorrect \n It is now ${currentPlayer.name}'s Turn.`);
   }
+  playerAnswer.value = ""; // This clears the input field after each question
   if (questionCount === 2) {
     modal.style.display = "none";
   }

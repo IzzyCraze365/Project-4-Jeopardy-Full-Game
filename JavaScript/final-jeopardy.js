@@ -3,7 +3,6 @@
 // John Isabella III
 // FINAL ROUND
 
-
 import placeholderQuestions from "../scripts/placeholder-questions.js";
 
 //List of Variables
@@ -11,12 +10,10 @@ var modal = document.querySelector("#modal");
 let questionButton = document.querySelector(".points"); //Going Fishing
 ("finalQuestion-btn"); //Going Fishing
 let wagerButton = document.getElementById("wager-btn"); //Going Fishing
-let finalAnswerButton = document.getElementById("final-btn"); //Going Fishing
+let finalText = document.getElementById("finalText"); //Going Fishing
 let popupAnswers = document.querySelector(".popupAnswers"); //Going Fishing
 
-let categoryList = [
-  "Final",
-]; // TODO Empty Array
+let categoryList = ["Final"]; // TODO Empty Array
 
 class Player {
   constructor(name, score, wager) {
@@ -55,25 +52,24 @@ let questionCount = 0; // Keeps track of how many guesses the players make (max 
 if (player1.name === null) {
   player1.name = "Player 1";
 }
-if (player2.name=== null) {
+if (player2.name === null) {
   player2.name = "Player 2";
 }
 if (player1.score === null) {
   player1.score = 0;
 }
-if (player2.score=== null) {
+if (player2.score === null) {
   player2.score = 0;
 }
 if (player1.score < player2.score) {
   // Determins who goes first in Round 2
   currentPlayer = player1;
-}else if (player1.score > player2.score) {
-    // Determins who goes first in Round 2
-    currentPlayer = player2;
+} else if (player1.score > player2.score) {
+  // Determins who goes first in Round 2
+  currentPlayer = player2;
 } else {
   currentPlayer = player1;
 }
-playerTurn.textContent = `${currentPlayer.name}'s Turn`;
 score1.textContent = `${player1.name}'s Score: ${player1.score}`;
 score2.textContent = `${player2.name}'s Score: ${player2.score}`;
 
@@ -83,8 +79,7 @@ let finalQuestion = {
   finalQuestion0: placeholderQuestions.filter(
     (cat) => cat.category === categoryList[0]
   ),
-  };
-
+};
 
 // Populate the Questions // TODO make this look neater
 let newQuestion = document.createElement("p");
@@ -93,13 +88,13 @@ let questionValue = 0; // placeholder value
 // Populate the Modal
 let wagerModal = document.querySelector("#popupInsideWagerModal");
 wagerModal.innerText = `FINAL CATEGORY \n "${finalQuestion.finalQuestion0[0].category}"`;
-popupAnswers.innerText = `${currentPlayer.name}'s Bet:`
+popupAnswers.innerText = `${currentPlayer.name}'s Bet:`;
 
 questionButton.addEventListener("click", () => {
-    modal.style.display = "block";
-    //newQuestion= displayQuestion(categoryList[0], 0);; //! TEST
-    //newQuestion = displayQuestion(questionCategory, questionValue);
-  });
+  modal.style.display = "block";
+  //newQuestion= displayQuestion(categoryList[0], 0);; //! TEST
+  //newQuestion = displayQuestion(questionCategory, questionValue);
+});
 
 //! FUNCTIONS (Alphabetical Order)
 // Function that Selects the Question Data we are using
@@ -107,34 +102,58 @@ function displayQuestion(category, value) {
   return selectedQuestions[category][value];
 }
 
-
-// TODO get this to work
+// TODO get this to work, wagers are reading as Strings
 wagerButton.onclick = function () {
-  clickCount++;
- // while(clickCount <5){
-    clickCount++;
   if (clickCount === 0) {
-    currentPlayer = nextPlayerTurn();
-    
-    popupAnswers.innerText = `${currentPlayer.name}'s Bet:`
-  }else if (clickCount === 2) {
-    popupAnswers.textcontent = `${currentPlayer}'s Bet `
+    finalText.value = ""; // This clears the input field
     clickCount++;
-    currentPlayer = nextPlayerTurn();
-  }else if (clickCount === 3) {
-    popupAnswers.textcontent = `${currentPlayer}'s Bet `
+    console.log("clickcount", clickCount), //! TEST
+      (currentPlayer.wager = +finalText.value);
+    console.log("finalText.value", finalText.value, typeof finalText.value), //! TEST
+      console.log("Current Player", currentPlayer), //! TEST
+      console.log(
+        "Current Player",
+        currentPlayer.wager,
+        typeof currentPlayer.wager
+      ), //! TEST
+      wagerCheck(currentPlayer);
+    console.log("Current Player", currentPlayer), //! TEST
+      (currentPlayer = nextPlayerTurn());
+    popupAnswers.innerText = `${currentPlayer.name}'s Bet:`;
+  } else if (clickCount === 1) {
+    finalText.value = "";
     clickCount++;
+    currentPlayer.wager = +finalText.value;
+    console.log("finalText.value", finalText.value, typeof finalText.value), //! TEST
+      console.log("Current Player", currentPlayer), //! TEST
+      console.log(
+        "Current Player",
+        currentPlayer.wager,
+        typeof currentPlayer.wager
+      ), //! TEST
+      wagerCheck(currentPlayer);
     currentPlayer = nextPlayerTurn();
-  }else if (clickCount === 4) {
-    popupAnswers.textcontent = `${currentPlayer}'s Bet `
+    popupAnswers.innerText = `${currentPlayer.name}'s Final Answer:`;
+    wagerModal.innerText = `"${finalQuestion.finalQuestion0[0].category}"\n${finalQuestion.finalQuestion0[0].question}`;
+    finalText.placeholder = "Final Answer";
+    wagerButton.innerText = "Submit Final Answer";
+  } else if (clickCount === 2) {
+    finalText.value = "";
     clickCount++;
-    currentPlayer = nextPlayerTurn();
+    console.log("clickcount", clickCount), //! TEST
+      (currentPlayer = nextPlayerTurn());
+    popupAnswers.innerText = `${currentPlayer.name}'s Final Answer:`;
+  } else if (clickCount === 3) {
+    finalText.value = "";
+    questionButton.classList.add("disabledFinal");
+    questionButton.innerText = `WINNER\n${currentPlayer.name}\nScore = ${currentPlayer.score}`;
     modal.style.display = "none";
+  } else {
+    console.log("ERROR with ClickCount");
   }
-  }
-  
+
   currentScore = scoreCheck(currentPlayer);
-//};
+};
 
 // Function that Determines which Player's turn it is
 function nextPlayerTurn() {
@@ -145,7 +164,6 @@ function nextPlayerTurn() {
   } else {
     alert("Error.");
   }
-  playerTurn.textContent = `${currentPlayer.name}'s Turn`;
   return currentPlayer;
 }
 
@@ -160,23 +178,19 @@ function scoreCheck(currentPlayer) {
   }
 }
 
-// Modal Buttons
-finalAnswerButton.onclick = function () {
-  questionCount++;
-  if (playerAnswer.value.toUpperCase() === newQuestion.answer.toUpperCase()) {
-    currentPlayer.score += (+questionValue + 1) * 200;
-    currentScore.textContent = `${currentPlayer.name}'s Score: ${currentPlayer.score}`;
-    alert(`That is the Correct Answer \n It is ${currentPlayer.name}'s Turn.`);
-    modal.style.display = "none";
-
-
-    currentPlayer.score -= (+questionValue + 1) * 200;
-    currentScore.textContent = `${currentPlayer.name}'s Score: ${currentPlayer.score}`;
-    currentPlayer = nextPlayerTurn();
-    currentScore = scoreCheck(currentPlayer);
-    alert(`That is Incorrect \n It is now ${currentPlayer.name}'s Turn.`);
+// Function that Determines which Player's turn it is
+function wagerCheck(currentPlayer) {
+  if (currentPlayer.wager >= 0 && currentPlayer.wager <= currentPlayer.score) {
+    alert(`${currentPlayer.name} has bet $${currentPlayer.wager}.`);
+  } else if (currentPlayer.wager > currentPlayer.score) {
+    currentPlayer.wager = currentPlayer.score;
+    alert(
+      `You wagered more points than you have. Your wager has been set to $${currentPlayer.score}`
+    );
+  } else if (currentPlayer.wager < 0) {
+    currentPlayer.wager = 0;
+    alert(`You cannot bet less than $0.  Your wager has been set to $0`);
+  } else {
+    alert(`${currentPlayer.name} wager makes no sense and will be set to $0.`);
   }
-  if (questionCount === 2) {
-    modal.style.display = "none";
-  }
-};
+}
