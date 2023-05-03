@@ -1,0 +1,38 @@
+/* CSS Week 4 (& Week 1) - Project */
+/* Jeopardy! Project  */
+
+/* TODO imported into index.css */
+
+/* TODO ICEBOX: The site should have animated elements. Libraries are allowed. */
+
+/* I discovered this on howtocodeschool.com  */
+
+/* Rotate the Logo on the Landing Page */
+.flip {
+}
+.flip:hover {
+  animation: flip 2s linear;
+}
+@keyframes flip {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Flip the Point Value on the Questions */
+.spin {
+}
+.spin:hover {
+  animation: rotate 1s linear;
+}
+@keyframes rotate {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(360deg);
+  }
+}

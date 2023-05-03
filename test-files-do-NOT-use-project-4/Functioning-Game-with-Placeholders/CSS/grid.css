@@ -1,0 +1,213 @@
+/* CSS Week 4 (& Week 1) - Project */
+/* Jeopardy! Project  */
+
+/* TODO imported into index.css */
+
+/*! Organizing the Various Grids  */
+
+/* Classes */
+/* This is the general Order Each Web Page will follow from top to bottom */
+.tub {
+  display: grid;
+  grid-template-columns: 1fr; /* Repeating option to make a full grid */
+  gap: 10px;
+  grid-template-areas: /* this is how you organize your website */
+    "header" /* found in styles.css */
+    "player" /* found in styles.css */
+    "logo" /* found in styles.css */
+    "category" /*! look below */
+    "question" /*! look below */
+    "finalJeopardy" /* found in styles.css */
+    "bet" /* found in styles.css */
+    "userInput" /* found in styles.css */
+    "answers" /* found in styles.css */
+    "score" /*! look below */
+    "links" /* found in styles.css along with button.hovor*/
+    "nextRound" /* found in styles.css along with button.hovor*/
+    "footer"; /* found in styles.css along with button.hovor*/
+}
+
+/* Catergories are organized in their own seperate Grid */
+.category {
+  grid-area: category;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* 6 equal columns */
+  gap: 1px;
+  font-size: 2em;
+  text-align: center;
+  grid-template-areas: /* this is how you organize your website into a grid */ "category1 category2 category3 category4 category5 category6";
+  background-color: var(--background);
+  margin: 0 10%;
+}
+/* Each category Class (below) ius being called by the grid-template-area (above) */
+.category1 {
+  grid-area: category1;
+  overflow-wrap: break-word;
+  overflow: hidden;
+}
+.category2 {
+  grid-area: category2;
+  overflow-wrap: break-word;
+  overflow: hidden;
+}
+.category3 {
+  grid-area: category3;
+  overflow-wrap: break-word;
+  overflow: hidden;
+}
+.category4 {
+  grid-area: category4;
+  overflow-wrap: break-word;
+  overflow: hidden;
+}
+.category5 {
+  grid-area: category5;
+  overflow-wrap: break-word;
+  overflow: hidden;
+}
+.category6 {
+  grid-area: category6;
+  overflow-wrap: break-word;
+  overflow: hidden;
+}
+
+/* Questions are organized in their own seperate Grid */
+.question {
+  grid-area: question;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* 6 equal columns */
+  gap: 1px;
+  text-align: center;
+  font-size: 2em;
+  grid-template-areas: /* this is how you organize your website into a grid */
+    "question1_100 question2_100 question3_100 question4_100 question5_100 question6_100"
+    "question1_200 question2_200 question3_200 question4_200 question5_200 question6_200"
+    "question1_300 question2_300 question3_300 question4_300 question5_300 question6_300"
+    "question1_400 question2_400 question3_400 question4_400 question5_400 question6_400"
+    "question1_500 question2_500 question3_500 question4_500 question5_500 question6_500";
+  /* background-color: var(--questionBackground); */
+  margin: 0 10%;
+}
+.question:hover {
+  background-color: var(--questionBackground);
+}
+/* Each question Class (below) ius being called by the grid-template-area (above) */
+#question1_100 {
+  grid-area: question1_100;
+}
+#question1_200 {
+  grid-area: question1_200;
+}
+#question1_300 {
+  grid-area: question1_300;
+}
+#question1_400 {
+  grid-area: question1_400;
+}
+#question1_500 {
+  grid-area: question1_500;
+}
+#question2_100 {
+  grid-area: question2_100;
+}
+#question2_200 {
+  grid-area: question2_200;
+}
+#question2_300 {
+  grid-area: question2_300;
+}
+#question2_400 {
+  grid-area: question2_400;
+}
+#question2_500 {
+  grid-area: question2_500;
+}#question3_100 {
+  grid-area: question3_100;
+}
+#question3_200 {
+  grid-area: question3_200;
+}
+#question3_300 {
+  grid-area: question3_300;
+}
+#question3_400 {
+  grid-area: question3_400;
+}
+#question3_500 {
+  grid-area: question3_500;
+}
+#question4_100 {
+  grid-area: question4_100;
+}
+#question4_200 {
+  grid-area: question4_200;
+}
+#question4_300 {
+  grid-area: question4_300;
+}
+#question4_400 {
+  grid-area: question4_400;
+}
+#question4_500 {
+  grid-area: question4_500;
+}
+#question5_100 {
+  grid-area: question5_100;
+}
+#question5_200 {
+  grid-area: question5_200;
+}
+#question5_300 {
+  grid-area: question5_300;
+}
+#question5_400 {
+  grid-area: question5_400;
+}
+#question5_500 {
+  grid-area: question5_500;
+}
+#question6_100 {
+  grid-area: question6_100;
+}
+#question6_200 {
+  grid-area: question6_200;
+}
+#question6_300 {
+  grid-area: question6_300;
+}
+#question6_400 {
+  grid-area: question6_400;
+}
+#question6_500 {
+  grid-area: question6_500;
+}
+
+/* Scores are organized in their own seperate Grid */
+.score {
+  grid-area: score;
+  grid-template-columns: 1fr 1fr; /* 2 equal columns */
+  gap: 10px;
+  grid-template-areas: "score1 score2";
+  justify-content: center;
+  margin: 0 10%;
+}
+/* Each score Class (below) ius being called by the grid-template-area (above) */
+.score1 {
+  display: flex;
+  grid-area: score1;
+  justify-content: center;
+  text-align: center;
+  font-size: 2em;
+  color: var(--textColor1);
+  background-color: var(--textColor2);
+}
+.score2 {
+  display: flex;
+  grid-area: score2;
+  justify-content: center;
+  text-align: center;
+  font-size: 2em;
+  color: var(--textColor2);
+  background-color: var(--textColor1);
+}

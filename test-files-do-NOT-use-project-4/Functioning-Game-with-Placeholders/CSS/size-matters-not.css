@@ -1,0 +1,43 @@
+/* CSS Week 4 (& Week 1) - Project */
+/* Jeopardy! Project  */
+
+/* TODO imported into index.css */
+
+/* This code changes the properties of the website as the display screen gets smaller */
+
+/* TODO ICEBOX: Make the site fully mobile responsive. */
+
+@media screen and (max-width: 1024px) {
+  body {
+    background-color: var(--websiteBody2);
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    background-color: var(--websiteBody3);
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  body {
+    background-color: var(--websiteBody4);
+    font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  body {
+    background-color: var(--websiteBody5);
+    font-size: 6px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  body {
+    background-color: var(--websiteBody6);
+    font-size: 4px;
+  }
+}

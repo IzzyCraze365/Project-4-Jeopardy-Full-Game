@@ -1,0 +1,27 @@
+/* CSS Week 4 (& Week 1) - Project */
+/* Jeopardy! Project  */
+
+/*! This sheet imports the other style sheets into HTML*/
+
+/* Setup CSS Provides the baseline Website Parameters and is home to the Variable Color Chart  */
+@import "setup.css";
+
+/* Identifies all of the classes used in HTML  */
+@import "styles.css";
+
+/* Organizes the classes into a Grid Pattern elaborates on style  */
+@import "grid.css";
+
+/* Controls the Website parameters as the Screen Size changes  */
+@import "size-matters-not.css";
+
+/* Adds some fun FX to the site  */
+@import "animation.css";
+
+/* Adds a Modal to the site  */
+@import "modal.css";
+
+/* this is the only CSS imported into index.html */
+/* this is the only CSS imported into round-1.html */
+/* this is the only CSS imported into round-1.html */
+/* this is the only CSS imported into final-jeopardy.html */

@@ -1,0 +1,84 @@
+<!-- HTML Week 4 (& Week 1) - Project -->
+<!-- Jeopardy! Project -->
+<!-- Landing Page -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jeopardy</title>
+    <!-- Boot Strap reference link  "paste link into head of html" -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href=".\CSS\index.css" />
+    <!-- Linked to CSS -->
+  </head>
+  <body>
+    <h1 class="text-center">Welcome to Jeopardy</h1>
+    <!-- Do not change the script source. Allows import/export to work. -->
+    
+    <!-- I added the lines below here -->
+    <div class="tub">
+      <div class="box header">Welcome to Jeopardy</div>
+      <div class="logo">
+        <img
+          class="flip"
+          src="https://ntvb.tmsimg.com/assets/p184056_b_h8_ar.jpg?w=1280&h=720"
+          alt="Jeopardy Logo"
+        />
+        <br />This is Jeopardy
+      </div>
+    </div>
+    <div>
+      <div class="userInput">
+        <!-- This code allows the player to input an answer -->
+        <input
+        type="text"
+        id="player1Name"
+        minlength="0"
+        maxlength="50"
+        size="30"
+        placeholder="Player 1 Name"
+        />
+      </div>
+      <div class="userInput">
+        <!-- This code allows the player to input an answer -->
+        <input
+          type="text"
+          id="player2Name"
+          required
+          minlength="0"
+          maxlength="50"
+          size="30"
+          placeholder="Player 2 Name";
+        />
+      </div>
+    </div>
+      <!-- Next Round Buttons -->
+      <div class="nextRound">
+        <nav class="links">
+          <a class="button" id="nextRound">PLAY</a>
+        </nav>
+      </div>
+      <div class="box footer">
+        Welcome to Jeopardy.com, home of America's Favorite Quiz Show <br />
+        Working in conjunction with Upright Education <br />
+        and the Angry Coder Named John Foundation
+      </div>
+    </div>
+<!-- List of Scripts Used -->
+    <script src="./scripts/index.js" type="module"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src=".\JavaScript\index.js"></script>
+  </body>
+</html>
