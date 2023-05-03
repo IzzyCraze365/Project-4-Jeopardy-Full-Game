@@ -60,6 +60,8 @@ playerTurn.textContent = `${currentPlayer.name}'s Turn`;
 score1.textContent = `${player1.name}'s Score: ${player1.score}`;
 score2.textContent = `${player2.name}'s Score: ${player2.score}`;
 modalName.innerText = `${currentPlayer.name}'s response:`;
+//dailyDouble(); // Creates the Daily Double //TODO
+
 
 // Assign values to the categories
 let selectedQuestions = {
@@ -123,6 +125,21 @@ questionButton.forEach((questionBox) => {
 });
 
 //! FUNCTIONS (Alphabetical Order)
+
+
+// Function that marks the 2 questions that will be Daily Doubles
+//TODO finish this 
+function dailyDouble(){
+  let i = randomNum(1, 6);
+  let j = randomNum(1, 5);
+  let idValue = `question${i}_${j}00`;
+  console.log(idValue);
+  // TODO need to perform this action twice but so it doesn't roll the same question both times.
+//TODO need to ad the classlist to the question
+  something.classList.add(dailyDouble)
+}
+
+
 // Function that Selects the Question Data we are using
 function displayQuestion(category, value) {
   return selectedQuestions[category][value];
@@ -179,6 +196,12 @@ function nextPlayerTurn() {
   playerTurn.textContent = `${currentPlayer.name}'s Turn`;
   modalName.innerText = `${currentPlayer.name}'s response:`;
   return currentPlayer;
+}
+
+// Function to Generate a Random Number
+function randomNum(min, max) {
+  let range = max - min + 1;
+  return Math.floor(Math.random() * range) + min;
 }
 
 // Function that Determines which Player's turn it is
