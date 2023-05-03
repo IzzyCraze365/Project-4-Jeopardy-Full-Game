@@ -6,14 +6,14 @@ The game of Jeopardy consists of several players that compete to earn points by 
 You will be given placeholder data for this project in the form of an array of objects.
 
 # Stories
-## Ready, Set, Go!
+## Ready, Set, Go! `done`
 `Given` the players are on the landing page
 
 `When` one player clicks the 'Start Game' button
 
 `Then` the players redirected to the Round 1 page
 
-## Start the Game
+## Start the Game  `done`
 `Given` the players have been redirected to the Round 1 page
 
 `When` the page loads
@@ -22,7 +22,7 @@ You will be given placeholder data for this project in the form of an array of o
 
 `And` the "Guess", "Pass", and "Round 2" buttons are disabled
 
-## Select a Question
+## Select a Question  `done`
 `Given` an empty board, and player 1 is currently up
 
 `When` player 1 selects a card
@@ -33,7 +33,7 @@ You will be given placeholder data for this project in the form of an array of o
 
 `And` the "Pass Question" button is enabled
 
-## Pass a Question
+## Pass a Question  `done`
 `Given` a question has been chosen
 
 `When` the user clicks on the "Pass Question" button
@@ -42,7 +42,7 @@ You will be given placeholder data for this project in the form of an array of o
 
 `And` the notification area changes to player 2's turn
 
-## Answer a Question Correctly
+## Answer a Question Correctly  `done`
 `Given` a question has been chosen
 
 `When` the player submits an answer
@@ -55,7 +55,7 @@ You will be given placeholder data for this project in the form of an array of o
 
 `And` the current player does not change
 
-## Answer a Question Incorrectly
+## Answer a Question Incorrectly  `done`
 `Given` a question has been chosen
 
 `When` the player submits an answer
@@ -68,14 +68,14 @@ You will be given placeholder data for this project in the form of an array of o
 
 `And` if no one guesses correctly the original player gets to choose a new question
 
-## Score Board
+## Score Board  `done`
 `Given` the game has been started
 
 `When` the score changes
 
 `Then` the game should display each player's current score on the page
 
-## Only Allow One Question
+## Only Allow One Question  `done`
 `Given` a card has already been selected
 
 `When` the player tries to pick a new card
@@ -84,8 +84,8 @@ You will be given placeholder data for this project in the form of an array of o
 
 `And` the game alerts the player that they must answer, or pass the question
 
-## End Round 1
-`Given` that the score of one user reaches 15,000 points.
+## End Round 1  `done`
+`Given` that the score of one user reaches 15,000 points.  `15000 points is not possible`
 
 `Or` the board has been cleared
 
@@ -97,7 +97,7 @@ You will be given placeholder data for this project in the form of an array of o
 
 ### Hint: You can use query parameters in the URL to pass score information between pages
 
-# Round 2
+# Round 2  `done`
 `Given` the players are on the Round 2 Page
 
 `Then` the players scores are the same as they were at the end of Round 1.
@@ -106,8 +106,8 @@ You will be given placeholder data for this project in the form of an array of o
 
 `And` the "Final Round" button is disabled
 
-## End Round 2
-`Given` that the score of one user reaches 30,000 points.
+## End Round 2  `done`
+`Given` that the score of one user reaches 30,000 points. `30k points is not possible`
 
 `Or` the board has been cleared
 
@@ -117,14 +117,14 @@ You will be given placeholder data for this project in the form of an array of o
 
 `And` the "Final Round" button navigates to the Final Round page.
 
-# Final Round
+# Final Round  `done`
 `Given` the players are on the Final Round page
 
 `Then` they should be presented with a category
 
 `And` prompted to make a wager up to their maximum point total
 
-# Let's Make a Wager!
+# Let's Make a Wager!  `done`
 `Given` we're on the Final Round page
 
 `When` all players have made a wager
@@ -133,7 +133,7 @@ You will be given placeholder data for this project in the form of an array of o
 
 `And` all players get a chance to answer the question before the answer is revealed
 
-# Winning the Game
+# Winning the Game  `done`
 `Given` all players have answered the final question
 
 `When` the last answer is submitted
@@ -143,7 +143,7 @@ You will be given placeholder data for this project in the form of an array of o
 `And` the game should notify the users who won based on the final score
 
 # Icebox
-## Say my Name!
+## Say my Name!  `done`
 `Given` the the user is on the landing page
 
 `When` the user clicks "Start Game"

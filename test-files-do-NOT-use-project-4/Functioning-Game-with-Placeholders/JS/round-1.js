@@ -130,7 +130,7 @@ function displayQuestion(category, value) {
 
 // Function that tracks when the Round is over
 function endOfRound(totalQuestionCounter) {
-  if (totalQuestionCounter === 2) {
+  if (totalQuestionCounter === 30) {
     //TODO Change this Back to 30 after Testing
     mainMenu.classList.add("disabled");
     nextRound.classList.remove("disabled");
