@@ -65,10 +65,10 @@ if (player1.name === null) {
 if (player2.name === null) {
   player2.name = "Player 2";
 }
-if (player1.score === null) {
+if (player1.score === NaN) {
   player1.score = 0;
 }
-if (player2.score === null) {
+if (player2.score === NaN) {
   player2.score = 0;
 }
 if (player1.score < player2.score) {
@@ -159,7 +159,7 @@ function displayQuestion(category, value) {
 
 // Function that tracks when the Round is over
 function endOfRound(totalQuestionCounter) {
-  if (totalQuestionCounter === 1) {
+  if (totalQuestionCounter >= 30) {
     //TODO Change this Back to 30 after Testing
     mainMenu.classList.add("disabled");
     nextRound.classList.remove("disabled");
