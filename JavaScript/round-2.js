@@ -159,7 +159,7 @@ function displayQuestion(category, value) {
 
 // Function that tracks when the Round is over
 function endOfRound(totalQuestionCounter) {
-  if (totalQuestionCounter >= 30) {
+  if (totalQuestionCounter >= 1) {
     //TODO Change this Back to 30 after Testing
     mainMenu.classList.add("disabled");
     nextRound.classList.remove("disabled");
@@ -233,6 +233,7 @@ guessButton.onclick = function () {
       } points.\nIt is ${currentPlayer.name}'s Turn.`
     );
     modal.style.display = "none";
+    endOfRound(totalQuestionCounter);
   } else {
     currentPlayer.score -= (+questionValue + 1) * 200;
     currentScore.textContent = `${currentPlayer.name}'s Score: ${currentPlayer.score}`;
